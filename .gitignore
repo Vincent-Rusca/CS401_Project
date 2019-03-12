@@ -1,0 +1,7 @@
+.idea/
+build/
+*.iws
+*.iml
+*.json
+*.dat
+*.ipr
