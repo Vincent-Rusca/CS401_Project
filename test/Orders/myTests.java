@@ -1,4 +1,4 @@
-/* Carlos Castillo
+package Orders;/* Carlos Castillo
  * 3.12.19
  * Description: This package contains tests for some of the functions from the [OrderList] and [Order] classes
  * Note: not all functions were included since most of them were just simple setters and getters, only the

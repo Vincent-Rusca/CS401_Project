@@ -1,16 +1,32 @@
+/* Carlos Castillo
+ * Created: 3.8.19
+ * Description: The orderList class */
+
 package Orders;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/* Will be a list of [order]s that has the ability to return [Order] objects,and be reorganized by a certain characteristic
+  * of the [order]s, add and remove [Order] objects, and have the ability to show the [orderList]'s contents */
 public class OrderList {
     private List<Order> orderList;
+    private String orderListName;
 
-    public OrderList(){
-        orderList = new ArrayList<Order>();
+    /* constructor to initialize a new list and the name of the [orderList]*/
+    public OrderList(String name){
+        orderList = new ArrayList<>();
+        orderListName = name;
     }
 
+    /* changes the name of the [orderList[ */
+    public void changeOrderListName(String newName){ orderListName = newName; }
+
+    /* returns the name of the [orderList] */
+    public String getOrderListName(){ return orderListName; }
+
+    /* will add an [Order] object to the [orderList] */
     public void addOrder(Order newOrder){
         Scanner reader = new Scanner(System.in);
 
@@ -49,16 +65,39 @@ public class OrderList {
         orderList.add(newOrder);       // if its an entirely new entry, then just add it to the orderList
     }
 
-    /*  */
+    /* returns an [Order] by index */
+    public Order getOrderByIndex(int index){
+        return orderList.get(index);
+    }
+
+    /* returns an [Order] by removing it from the list */
+    public Order removeOrderByIndex(int index){
+        return orderList.remove(index);
+    }
+
+    /* adds adds or subtracts to the [order]'s quantity */
+    public void addToQuantity(String orderName, int num){
+        Order currOrder = getOrderbyName(orderName);
+        if(currOrder == null){
+            System.out.println("Could not find [" + orderName + "] in the orderList");
+        } else{
+            currOrder.addToQuantity(num);
+        }
+    }
+
+    /* will print out all the [Order]'s information in a formated way */
     public void showOrders(){
-        String item = "<ITEM>", cost = "<COST>", quantity = "<QUANTITY>", invoice = "<INVOICE>", desc = "<DESCRIPTION>";
+        String item = "<ITEM>", cost = "<COST>", quantity = "<QUANTITY>", invoice = "<INVOICE>", desc = "<DESCRIPTION>", date = "<DATE>", theTime = "<TIME>";
         System.out.println("");
-        System.out.printf( "%-20s %-15s %-20s %-15s %-15s %n", item, cost, quantity, invoice, desc);
-        System.out.print("--------------------------------------------------------------------------------------------");
+        System.out.printf( "%-20s %-15s %-20s %-15s %-15s %-15s %-15s %n", item, cost, quantity, invoice, date, theTime, desc);
+        System.out.print("----------------------------------------------------------------------------------------------------------------------------");
 
         for(Order currItem : orderList){
             System.out.println("");
-            System.out.printf( "%-20s %-15s %-20s %-15s %-15s", currItem.getItemName(), currItem.getCost(), currItem.getQuantity(), currItem.getInvoiceNumber(), currItem.getItemDescr());
+            System.out.printf( "%-20s %-15s %-20s %-15s %d.%d.%d %8s:%d:%d         %-20s", currItem.getItemName(), currItem.getCost(), currItem.getQuantity(), currItem.getInvoiceNumber(),
+                    currItem.getMo(), currItem.getDay(), currItem.getYr(),
+                    currItem.getHour(), currItem.getMin(), currItem.getSec(),
+                    currItem.getItemDescr());
         }
     }
 
@@ -67,13 +106,28 @@ public class OrderList {
         int initialsize = orderList.size();
         for(int i = 0; i < orderList.size(); i++){
             if(orderList.get(i).getItemName().equals(itemName)){
+                System.out.println(" ");
+                System.out.println("Removing [" + orderList.get(i).getItemName() + "] from the orderList");
                 orderList.remove(i);
+                break;
             }
         }
 
         if(initialsize == orderList.size()){
             System.out.println("Could not find item: " + itemName);
         }
+    }
+
+    /* will return an [order] object by the name, if not found then return null */
+    public Order getOrderbyName(String itemName){
+        for(int i = 0; i < orderList.size(); i++){
+            if(orderList.get(i).getItemName().equals(itemName)){
+                return orderList.get(i);
+            }
+        }
+
+        System.out.println("Could not find item: " + itemName);
+        return null;
     }
 
     /* will remove the matching invoice number that the user inputs */
@@ -91,6 +145,18 @@ public class OrderList {
         if(orderList.size() == initialSize){
             System.out.println("Could not find an item with the invoice number: " + invoiceNum);
         }
+    }
+
+    /* returns an [order] object by the invoice number, if not found then return null */
+    public Order getOrderByInvoice(int invoiceNum){
+        for(int i = 0; i < orderList.size(); i++){
+            if(orderList.get(i).getInvoiceNumber() == invoiceNum){
+                return orderList.remove(i);
+            }
+        }
+
+        System.out.println("Could not find an item with the invoice number: " + invoiceNum);
+        return null;
     }
 
     /* will add up all the prices for a given item */
@@ -138,6 +204,66 @@ public class OrderList {
                 } else if(secondItem.getItemName().charAt(0) < currSmallest.getItemName().charAt(0)){       // if the first two characters of the the strings are different....
                     minIndex = j;
                     currSmallest = orderList.get(minIndex);
+                }
+            }
+            /* swap elements to satisfy selection sort algorithm */
+            Order temp = orderList.get(minIndex);
+            orderList.set(minIndex,orderList.get(i));
+            orderList.set(i, temp);
+        }
+    }
+
+    /* will order the [orderList] by the newest entered orders first */
+    public void orderByNewest(){
+        Order currNewest;
+        Order secondItem;       // this will be compared to [currSmallest]
+
+        for(int i = 0; i < orderList.size()-1; i++){
+            int minIndex = i;
+            currNewest = orderList.get(minIndex);
+            for(int j = (i+1); j < orderList.size(); j++){
+                secondItem = orderList.get(j);
+                boolean found = false;
+
+                if(secondItem.getYr() > currNewest.getYr()){
+                    minIndex = j;
+                    currNewest = orderList.get(minIndex);
+                } else if(secondItem.getYr() > currNewest.getYr() && secondItem.getMo() < currNewest.getMo()){
+                    minIndex = j;
+                    currNewest = orderList.get(minIndex);
+                } else if(secondItem.getYr() > currNewest.getYr() && secondItem.getMo() < currNewest.getMo() && secondItem.getDay() < currNewest.getDay()){
+                    minIndex = j;
+                    currNewest = orderList.get(minIndex);
+                }
+            }
+            /* swap elements to satisfy selection sort algorithm */
+            Order temp = orderList.get(minIndex);
+            orderList.set(minIndex,orderList.get(i));
+            orderList.set(i, temp);
+        }
+    }
+
+    /* will order the [orderList] by the oldest entered orders first */
+    public void orderByOldest(){
+        Order currOldest;
+        Order secondItem;       // this will be compared to [currSmallest]
+
+        for(int i = 0; i < orderList.size()-1; i++){
+            int minIndex = i;
+            currOldest = orderList.get(minIndex);
+            for(int j = (i+1); j < orderList.size(); j++){
+                secondItem = orderList.get(j);
+                boolean found = false;
+
+                if(secondItem.getYr() < currOldest.getYr()){      //
+                    minIndex = j;
+                    currOldest = orderList.get(minIndex);
+                } else if(secondItem.getYr() == currOldest.getYr() && secondItem.getMo() < currOldest.getMo()){
+                    minIndex = j;
+                    currOldest = orderList.get(minIndex);
+                } else if(secondItem.getYr() == currOldest.getYr() && secondItem.getMo() == currOldest.getMo() && secondItem.getDay() < currOldest.getDay()){
+                    minIndex = j;
+                    currOldest = orderList.get(minIndex);
                 }
             }
             /* swap elements to satisfy selection sort algorithm */
