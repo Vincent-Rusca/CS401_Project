@@ -46,6 +46,8 @@ public class DataBase implements Serializable {
             {
                 String username = test1.next();
                 String password = test1.next();
+                testLog.getUsr(username);
+                testLog.getPwd(password);
 
             }
             test1.close();
