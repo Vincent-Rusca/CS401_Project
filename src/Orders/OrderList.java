@@ -272,4 +272,11 @@ public class OrderList {
             orderList.set(i, temp);
         }
     }
+
+    // isEmpty() function
+    public boolean isEmpty() {
+        if(orderList.isEmpty())
+            return true;
+        return false;
+    }
 }

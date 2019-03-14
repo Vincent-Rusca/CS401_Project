@@ -33,4 +33,14 @@ public class CustomerList {
     }
 
     // more functionality as needed...
+
+    // add
+    public void add(Customer customer) {
+        customerList.add(customer);
+    }
+
+    // remove
+    public void remove(Customer customer) {
+        customerList.remove(customer);
+    }
 }

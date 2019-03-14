@@ -13,13 +13,13 @@ public class Customer {
         customerName = "";
         customerID = -1;
         address = new Address();
-        orderList = new Orders.OrderList();
+        orderList = new Orders.OrderList("Customer Order List");
     }
     public Customer(String _companyName, int _companyID, Address _address) {
         customerName = _companyName;
         customerID = _companyID;
         address = _address;
-        orderList = new Orders.OrderList();
+        orderList = new Orders.OrderList("Customer Order List");
     }
 
     // getters
@@ -38,11 +38,11 @@ public class Customer {
 
 
     // setters
-    public void setCustomerName(String _companyName) {
-        customerName = _companyName;
+    public void setCustomerName(String _customerName) {
+        customerName = _customerName;
     }
-    public void setCustomerID(int _companyID) {
-        customerID = _companyID;
+    public void setCustomerID(int _customerID) {
+        customerID = _customerID;
     }
     public void setAddress(Address _address) {
         address = _address;
