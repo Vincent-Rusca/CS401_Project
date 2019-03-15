@@ -1,5 +1,8 @@
 package LoginAndDataBase;
 
+import menu.Menu;
+import menu.text.TextMenu;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,8 +10,6 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Login implements Serializable {
-    private UserAccounts username;
-    private UserAccounts password;
     private String usr;
     private String pwd;
     // Constructor
@@ -16,8 +17,6 @@ public class Login implements Serializable {
     {
         this.usr = new String();
         this.pwd = new String();
-        this.username = new UserAccounts();
-        this.password = new UserAccounts();
     }
 
     // Setters
@@ -88,7 +87,8 @@ public class Login implements Serializable {
                         System.out.println("Login Successful");
                         found = true;
                         loadUserFile.loadUserAccounts(username);
-                        // menu.start();
+                        Menu menu = new TextMenu();
+                        menu.start();
 
                     } else {
                         System.out.println("Wrong Password");

@@ -1,5 +1,9 @@
 /* Carlos Castillo
  * Created: 3.8.19
+ * Description: will be able to take in order objects that include all necessary
+ * information for an order and put into
+ * an order list that can then be manipulated
+ * Created: 3.8.19
  * Description: The Order class */
 
 package Orders;
