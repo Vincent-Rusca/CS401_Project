@@ -1,8 +1,5 @@
 package LoginAndDataBase;
-/*
-* A login menu and a database for storing the users and their information
-* @author Daniel Glancey
-* */
+
 
 /*
 * Username/password → leads into the menu
@@ -11,7 +8,6 @@ package LoginAndDataBase;
 */
 
 import java.io.*;
-import java.util.Scanner;
 
 public class DataBase implements Serializable {
 
@@ -30,34 +26,33 @@ public class DataBase implements Serializable {
         fileInputStream = fIO;
     }
 
-    public void loadUserAccounts()
+    public void setFileInputStream(FileInputStream fileInputStream) {
+        this.fileInputStream = fileInputStream;
+    }
+    /*Loads the users file specific to their username.
+    * If their file doesn't exist it will create one for them
+    * and automatically load it for them*/
+    public void loadUserAccounts(String user)
     {
-        //File test = new File("src/database/useraccount.txt").getAbsoluteFile();
-
+        File test = new File("src/database/"+user+".txt").getAbsoluteFile();
         try {
-            File test = new File("src/database/useraccount.txt").getAbsoluteFile();
-            Login testLog = new Login();
-            DataBase testu = new DataBase();
-            DataBase testp = new DataBase();
-            //UserAccounts testua = new UserAccounts();
-            Scanner test1 = new Scanner(test);
-            test1.useDelimiter(":|\\n");
-            while (test1.hasNext())
-            {
-                String username = test1.next();
-                String password = test1.next();
-
+            if(test.isFile()) {
+                BufferedReader fileRead = new BufferedReader(new FileReader(test));
+                System.out.println(fileRead.readLine());
             }
-            test1.close();
-        }catch (FileNotFoundException e) {
+            else if(!test.isFile())
+            {
+                test.createNewFile();
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException {
         Login test = new Login();
         test.login();
     }
