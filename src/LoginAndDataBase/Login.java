@@ -1,5 +1,8 @@
 package LoginAndDataBase;
 
+import menu.Menu;
+import menu.text.TextMenu;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -87,6 +90,8 @@ public class Login implements Serializable {
                         System.out.println("Login Successful");
                         found = true;
                         loadUserFile.loadUserAccounts(username);
+                        Menu menu = new TextMenu();
+                        menu.start();
 
                     } else {
                         System.out.println("Wrong Password");
