@@ -77,6 +77,7 @@ public class Login implements Serializable {
             UserAccounts testua = new UserAccounts();
             File test = new File("src/database/useraccount.txt").getAbsoluteFile();
             Scanner test1 = new Scanner(test);
+            /*IF YOU ARE USING A MAC/LINUX REMOVE \\r*/
             test1.useDelimiter(":|\\r\\n");
             boolean found = false;
             while (test1.hasNext() && !found)

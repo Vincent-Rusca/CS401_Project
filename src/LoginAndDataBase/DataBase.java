@@ -38,7 +38,6 @@ public class DataBase implements Serializable {
         try {
             if(test.isFile()) {
                 BufferedReader fileRead = new BufferedReader(new FileReader(test));
-                System.out.println(fileRead.readLine());
             }
             else if(!test.isFile())
             {
