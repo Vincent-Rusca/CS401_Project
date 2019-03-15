@@ -43,4 +43,9 @@ public class CustomerList {
     public void remove(Customer customer) {
         customerList.remove(customer);
     }
+
+    // get the customerList
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
 }
