@@ -26,7 +26,7 @@ public class AddCustomerTest {
     @Test
     public void customerAdded() {
         AddCustomer add = new AddCustomer();
-        String inputString = "name\n12\nnewname\n1234\n5678\nabc\ndef";
+        String inputString = "\nname\n12\nnewname\n1234\n5678\nabc\ndef";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
         Scanner scanner = new Scanner(inputStream);
         add.display(scanner, customerList);

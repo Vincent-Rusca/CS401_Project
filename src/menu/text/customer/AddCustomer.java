@@ -16,7 +16,7 @@ public class AddCustomer implements MenuItem {
     @Override
     public void display(Scanner scanner, CustomerList customerList) {
         System.out.println("input the customer name");
-        // scanner.skip("\n");
+        scanner.skip("\n");
         String customerName = scanner.nextLine();
         System.out.println("input the customer id");
         String customerId =  scanner.nextLine();
