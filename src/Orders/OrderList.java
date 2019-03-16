@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /* Will be a list of [order]s that has the ability to return [Order] objects,and be reorganized by a certain characteristic
   * of the [order]s, add and remove [Order] objects, and have the ability to show the [orderList]'s contents */
-public class OrderList {
+public class OrderList{
     private List<Order> orderList;
     private String orderListName;
 
@@ -67,11 +67,19 @@ public class OrderList {
 
     /* returns an [Order] by index */
     public Order getOrderByIndex(int index){
+        if(index > orderList.size()-1){     // if the user selects and index our of range
+            return null;
+        }
+
         return orderList.get(index);
     }
 
     /* returns an [Order] by removing it from the list */
     public Order removeOrderByIndex(int index){
+        if(index > orderList.size()-1){
+            return null;
+        }
+
         return orderList.remove(index);
     }
 
@@ -255,7 +263,7 @@ public class OrderList {
                 secondItem = orderList.get(j);
                 boolean found = false;
 
-                if(secondItem.getYr() < currOldest.getYr()){      //
+                if(secondItem.getYr() < currOldest.getYr()){      // if the statement is true, the [secondItem] will technically be a smaller number but thats because 2018 is older than 2019 for example
                     minIndex = j;
                     currOldest = orderList.get(minIndex);
                 } else if(secondItem.getYr() == currOldest.getYr() && secondItem.getMo() < currOldest.getMo()){
@@ -271,12 +279,5 @@ public class OrderList {
             orderList.set(minIndex,orderList.get(i));
             orderList.set(i, temp);
         }
-    }
-
-    // isEmpty() function
-    public boolean isEmpty() {
-        if(orderList.isEmpty())
-            return true;
-        return false;
     }
 }
