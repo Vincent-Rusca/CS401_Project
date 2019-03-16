@@ -1,9 +1,8 @@
 package menu.text.customer;
 
-import Customers.Customer;
+import Customers.CustomerList;
 import menu.MenuItem;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,17 +12,21 @@ import java.util.Scanner;
 public class DisplayCustomers implements MenuItem {
 
     @Override
-    public void display(Scanner scanner, List<Customer> customerList) {
-        for (int i = 0; i < customerList.size(); ++i) {
-            System.out.println(i + " - customer name: " + customerList.get(i).getCustomerName());
-            System.out.println(i + " - customer id: " + customerList.get(i).getCustomerID());
-            System.out.println(i + " - customer address: " + customerList.get(i).getAddress());
+    public void display(Scanner scanner, CustomerList customerList) {
+        for (int i = 0; i < customerList.getCustomerList().size(); ++i) {
+            System.out.println(i + " - customer name: " + customerList.getCustomerList().get(i).getCustomerName());
+            System.out.println(i + " - customer id: " + customerList.getCustomerList().get(i).getCustomerID());
+            System.out.println(i + " - customer address: " + customerList.getCustomerList().get(i).getAddress());
         }
     }
 
-    public void displayNames(List<Customer> customerList) {
-        for (int i = 0; i < customerList.size(); ++i) {
-            System.out.println(i + " - " + customerList.get(i).getCustomerName());
+    /**
+     * display a shorter list of customers, using only their names
+     * @param customerList list to display
+     */
+    public static void displayNames(CustomerList customerList) {
+        for (int i = 0; i < customerList.getCustomerList().size(); ++i) {
+            System.out.println(i + " - " + customerList.getCustomerList().get(i).getCustomerName());
         }
     }
 }

@@ -2,18 +2,21 @@ package menu.text.customer;
 
 import Customers.Address;
 import Customers.Customer;
+import Customers.CustomerList;
 import menu.MenuItem;
 
-import java.io.InputStream;
-import java.util.List;
 import java.util.Scanner;
 
+/**
+ * add a customer to the customer list
+ * @author Neil Moon
+ */
 public class AddCustomer implements MenuItem {
 
     @Override
-    public void display(Scanner scanner, List<Customer> customerList) {
+    public void display(Scanner scanner, CustomerList customerList) {
         System.out.println("input the customer name");
-        scanner.skip("\n");
+        // scanner.skip("\n");
         String customerName = scanner.nextLine();
         System.out.println("input the customer id");
         String customerId =  scanner.nextLine();
@@ -32,7 +35,12 @@ public class AddCustomer implements MenuItem {
         addCustomer(newCustomer, customerList);
     }
 
-    void addCustomer(Customer customer, List<Customer> customerList) {
+    /**
+     * add the given customer to the list
+     * @param customer customer to add
+     * @param customerList list to add to
+     */
+    private void addCustomer(Customer customer, CustomerList customerList) {
         customerList.add(customer);
     }
 }

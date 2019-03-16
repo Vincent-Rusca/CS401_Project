@@ -1,8 +1,7 @@
 package menu;
 
-import Customers.Customer;
+import Customers.CustomerList;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,5 +15,5 @@ public interface MenuItem {
      * @param scanner scanner for input
      * @param customerList existing list of customers
      */
-    void display(Scanner scanner, List<Customer> customerList);
+    void display(Scanner scanner, CustomerList customerList);
 }

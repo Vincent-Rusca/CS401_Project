@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
-public class AddCustomerTest {
+public class ModifyCustomerAddressTest {
 
     private Customer customer;
     private CustomerList customerList;
@@ -21,17 +21,19 @@ public class AddCustomerTest {
         customerList = new CustomerList();
         Address testAddress = new Address("1234", "5678", "abc", "def");
         customer = new Customer("name", "12", testAddress);
+        customerList.add(customer);
     }
 
     @Test
-    public void customerAdded() {
-        AddCustomer add = new AddCustomer();
-        String inputString = "name\n12\nnewname\n1234\n5678\nabc\ndef";
+    public void addressModified() {
+        String inputString = "street1\ncity2\nstate3\nzip4";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
         Scanner scanner = new Scanner(inputStream);
-        add.display(scanner, customerList);
-        // TODO: remove the getCustomerName call if customer gets an equals override
-        assertEquals(1, customerList.getCustomerList().size());
-        assertEquals(customer.getCustomerName(), customerList.getCustomerList().get(0).getCustomerName());
+        ModifyCustomerAddress modifyAddress = new ModifyCustomerAddress(customer);
+        Address newAddress = new Address("street1", "city2", "state3", "zip4");
+        modifyAddress.display(scanner, customerList);
+        // TODO: remove the toString calls if Address gets a properly implemented equals() override
+        assertEquals(customer.getAddress().toString(), newAddress.toString());
     }
+
 }
