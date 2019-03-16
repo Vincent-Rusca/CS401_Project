@@ -34,6 +34,12 @@ public class AddOrder implements MenuItem {
         addOrder(customerList, customer, order);
     }
 
+    /**
+     * add an order to the customer
+     * @param customerList customer's list
+     * @param customerChoice customer number to change
+     * @param order order to add
+     */
     private void addOrder(CustomerList customerList, int customerChoice, Order order) {
         Customer customer = customerList.getCustomerList().get(customerChoice);
         customerList.remove(customerList.getCustomerList().get(customerChoice));

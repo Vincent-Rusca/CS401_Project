@@ -4,18 +4,18 @@ package Customers;
 
 public class Customer {
     String customerName;
-    int customerID;
+    String customerID;
     Address address;
     Orders.OrderList orderList;
 
     // constructors
     public Customer() {
         customerName = "";
-        customerID = -1;
+        customerID = "-1";
         address = new Address();
         orderList = new Orders.OrderList("Customer Order List");
     }
-    public Customer(String _companyName, int _companyID, Address _address) {
+    public Customer(String _companyName, String _companyID, Address _address) {
         customerName = _companyName;
         customerID = _companyID;
         address = _address;
@@ -26,7 +26,7 @@ public class Customer {
     public String getCustomerName() {
         return customerName;
     }
-    public int getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
     public Address getAddress() {
@@ -41,7 +41,7 @@ public class Customer {
     public void setCustomerName(String _customerName) {
         customerName = _customerName;
     }
-    public void setCustomerID(int _customerID) {
+    public void setCustomerID(String _customerID) {
         customerID = _customerID;
     }
     public void setAddress(Address _address) {

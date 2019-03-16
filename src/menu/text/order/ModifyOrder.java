@@ -34,6 +34,12 @@ public class ModifyOrder implements MenuItem {
         customer.getOrderList().addOrder(order);
     }
 
+    /**
+     * modify the given order
+     * @param scanner scanner to get input from
+     * @param input parameter to change
+     * @param order order to modify
+     */
     private void modify(Scanner scanner, int input, Order order) {
         // note: changing the date the order was placed wouldn't make sense here
         switch (input) {

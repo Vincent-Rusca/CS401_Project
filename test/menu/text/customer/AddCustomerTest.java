@@ -20,7 +20,7 @@ public class AddCustomerTest {
     public void setUp() {
         customerList = new CustomerList();
         Address testAddress = new Address("1234", "5678", "abc", "def");
-        customer = new Customer("name", 12, testAddress);
+        customer = new Customer("name", "12", testAddress);
     }
 
     @Test

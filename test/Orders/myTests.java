@@ -1,4 +1,4 @@
-package Orders;/* Carlos Castillo
+/* Carlos Castillo
  * 3.12.19
  * Description: This package contains tests for some of the functions from the [OrderList] and [Order] classes
  * Note: not all functions were included since most of them were just simple setters and getters, only the
@@ -11,7 +11,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class myTests {
+public class myTests{
     private OrderList orderList;
     private Order order1;
     private Order order2;
@@ -60,6 +60,12 @@ public class myTests {
     }
 
     @Test
+    public void removeFromOrderListTest(){
+
+    }
+
+
+    @Test
     public void addToQuantity(){
         order1.addToQuantity(20);
         Assert.assertEquals(106, order1.getQuantity());
@@ -95,5 +101,20 @@ public class myTests {
         orderList.orderByOldest();
         firstOrder = orderList.getOrderByIndex(0);      // since 2010 was the newest order in the list, it should then be the first element in the list after its been ordered
         Assert.assertEquals(2010, firstOrder.getYr());
+    }
+
+    @Test
+    public void checkForInvalidObject(){
+        Assert.assertEquals(null, orderList.getOrderByIndex(3));        // would be acessing the fourth index which doesn't exist
+    }
+
+    @Test
+    public void getOrderByNameTest(){
+        Assert.assertEquals("apple", orderList.getOrderbyName("apple").getItemName());
+    }
+
+    @Test
+    public void getOrderByInvoiceTest(){
+        Assert.assertEquals("apple", orderList.getOrderByInvoice(55548).getItemName());
     }
 }

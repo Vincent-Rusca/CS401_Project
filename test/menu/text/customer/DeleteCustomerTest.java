@@ -23,9 +23,9 @@ public class DeleteCustomerTest {
     public void setUp() {
         customerList = new CustomerList();
         Address testAddress = new Address("1234", "5678", "abc", "def");
-        newCustomer = new Customer("name", 12, testAddress);
+        newCustomer = new Customer("name", "12", testAddress);
         customerList.add(newCustomer);
-        newCustomer2 = new Customer("name2", 24, testAddress);
+        newCustomer2 = new Customer("name2", "24", testAddress);
         customerList.add(newCustomer2);
     }
 

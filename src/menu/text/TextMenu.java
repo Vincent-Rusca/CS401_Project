@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 /**
  * Text implementation of the menu interface
- * NOTE: the menu does not accept spaces for input
+ * NOTE: the menu does not accept spaces for input due to strangeness with scanner's getLine
  * @author Neil Moon
  */
 // TODO: maybe it would be better to implement both Menu and MenuItem for consistency with the other menus

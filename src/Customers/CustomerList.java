@@ -24,7 +24,7 @@ public class CustomerList {
         }
         return null;
     }
-    public Customer searchByID (int _customerID) {
+    public Customer searchByID (String _customerID) {
         for (Customer customer : customerList) {
             if (customer.getCustomerID() == _customerID)
                 return customer;

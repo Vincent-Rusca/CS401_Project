@@ -16,17 +16,19 @@ public class AddCustomer implements MenuItem {
     @Override
     public void display(Scanner scanner, CustomerList customerList) {
         System.out.println("input the customer name");
-        String customerName = scanner.next();
+        scanner.skip("\n");
+        String customerName = scanner.nextLine();
         System.out.println("input the customer id");
-        int customerId =  scanner.nextInt();
+        String customerId =  scanner.nextLine();
         System.out.println("input the street address");
-        String streetAddress = scanner.next();
+        String streetAddress = "";
+        streetAddress = scanner.nextLine();
         System.out.println("input the city address");
-        String cityAddress = scanner.next();
+        String cityAddress = scanner.nextLine();
         System.out.println("input the state address");
-        String stateAddress = scanner.next();
+        String stateAddress = scanner.nextLine();
         System.out.println("input the zip address");
-        String zipAddress = scanner.next();
+        String zipAddress = scanner.nextLine();
         Address customerAddress = new Address(streetAddress, cityAddress, stateAddress, zipAddress);
         Customer newCustomer = new Customer(customerName, customerId, customerAddress);
         // modifying the list here modifies it outside this function
