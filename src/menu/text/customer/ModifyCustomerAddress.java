@@ -5,7 +5,6 @@ import Customers.Customer;
 import Customers.CustomerList;
 import menu.MenuItem;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
