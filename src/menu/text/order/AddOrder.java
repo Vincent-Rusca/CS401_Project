@@ -20,7 +20,8 @@ public class AddOrder implements MenuItem {
         System.out.println("input the customer to add an order to");
         int customer = scanner.nextByte();
         System.out.println("enter the item to order");
-        String item = scanner.next();
+        scanner.skip("\n");
+        String item = scanner.nextLine();
         System.out.println("enter the cost of the item");
         double cost = scanner.nextDouble();
         System.out.println("enter the quantity of the item");
@@ -28,7 +29,8 @@ public class AddOrder implements MenuItem {
         System.out.println("enter the invoice number");
         int invoice = scanner.nextInt();
         System.out.println("enter the item's description");
-        String description = scanner.next();
+        scanner.skip("\n");
+        String description = scanner.nextLine();
         Order order = new Order(item, cost, quantity, invoice, description);
         addOrder(customerList, customer, order);
     }
