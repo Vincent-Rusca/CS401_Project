@@ -19,7 +19,7 @@ public class ModfiyCustomerAddressTest {
     public void setUp() {
         customerList = new ArrayList<>();
         Address testAddress = new Address("1234", "5678", "abc", "def");
-        customer = new Customer("name", 12, testAddress);
+        customer = new Customer("name", "12", testAddress);
         customerList.add(customer);
     }
 

@@ -25,7 +25,7 @@ public class ModifyCustomer implements MenuItem {
                 break;
             case 2:
                 System.out.println("enter the new id");
-                customer.setCustomerID(scanner.nextInt());
+                customer.setCustomerID(scanner.next());
                 break;
             case 3:
                 // TODO: break this off into something that follows oop better

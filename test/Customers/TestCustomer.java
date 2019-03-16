@@ -24,8 +24,8 @@ public class TestCustomer {
         testCustomer.setCustomerName("testCo.");
         assertEquals(testCustomer.getCustomerName(), "testCo.");
 
-        testCustomer.setCustomerID(555555);
-        assertEquals(testCustomer.getCustomerID(), 555555);
+        testCustomer.setCustomerID("555555");
+        assertEquals(testCustomer.getCustomerID(), "555555");
 
         testCustomer.setAddress(testAddress);
         assertEquals(testCustomer.getAddress(), testAddress);
