@@ -280,4 +280,11 @@ public class OrderList{
             orderList.set(i, temp);
         }
     }
+
+    // isEmpty()
+    public boolean isEmpty() {
+        if(orderList.isEmpty())
+            return true;
+        return false;
+    }
 }
