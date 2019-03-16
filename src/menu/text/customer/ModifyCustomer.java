@@ -21,11 +21,11 @@ public class ModifyCustomer implements MenuItem {
         switch (input) {
             case 1:
                 System.out.println("enter the new name");
-                customer.setCustomerName(scanner.next());
+                customer.setCustomerName(scanner.nextLine());
                 break;
             case 2:
                 System.out.println("enter the new id");
-                customer.setCustomerID(scanner.next());
+                customer.setCustomerID(scanner.nextLine());
                 break;
             case 3:
                 // TODO: break this off into something that follows oop better

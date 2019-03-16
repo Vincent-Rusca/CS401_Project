@@ -14,13 +14,13 @@ public class ModfiyCustomerAddress implements MenuItem {
     @Override
     public void display(Scanner scanner, List<Customer> customerList) {
         System.out.println("input the street address");
-        String streetAddress = scanner.next();
+        String streetAddress = scanner.nextLine();
         System.out.println("input the city address");
-        String cityAddress = scanner.next();
+        String cityAddress = scanner.nextLine();
         System.out.println("input the state address");
-        String stateAddress = scanner.next();
+        String stateAddress = scanner.nextLine();
         System.out.println("input the zip address");
-        String zipAddress = scanner.next();
+        String zipAddress = scanner.nextLine();
         address = new Address(streetAddress, cityAddress, stateAddress, zipAddress);
         modifyAddress(address);
     }
