@@ -23,7 +23,7 @@ public class RemoveOrderTest {
     public void setUp() {
         customerList = new CustomerList();
         Address testAddress = new Address("1234", "5678", "abc", "def");
-        customer = new Customer("name", 12, testAddress);
+        customer = new Customer("name", "12", testAddress);
         order = new Order("apple", 6.14, 45, 48956, "a red thing");
         order2 = new Order("banana", 3.24, 25, 11124, "a curved yellow aparatis");
         customer.addToOrderList(order);
