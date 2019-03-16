@@ -1,3 +1,5 @@
 Juan:pablo
 Teeto:shrooms
 Carls:taco
+dog:balls
+dog:woof
