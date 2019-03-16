@@ -46,7 +46,7 @@ public class Login implements Serializable {
     protected void validLogin() {
         DataBase userPass = new DataBase();
         try {
-            //Menu menu = new TextMenu();
+            Menu menu = new TextMenu();
             UserAccounts user = new UserAccounts();
             userPass.loadUserAccounts();
             Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
@@ -56,7 +56,7 @@ public class Login implements Serializable {
             if (userAccountsSet.contains(newAccount)) {
                 System.out.println("Login Successful");
                 userPass.loadUserData(username);
-                //menu.start();
+                menu.start();
             } else {
                 System.out.println("Wrong password or User account doesn't exist." +
                         " Please register if the user account doesn't exist.");
