@@ -2,15 +2,15 @@ package menu.text.customer;
 
 import Customers.Address;
 import Customers.Customer;
+import Customers.CustomerList;
 import menu.MenuItem;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AddCustomer implements MenuItem {
 
     @Override
-    public void display(Scanner scanner, List<Customer> customerList) {
+    public void display(Scanner scanner, CustomerList customerList) {
         System.out.println("input the customer name");
         String customerName = scanner.next();
         System.out.println("input the customer id");
@@ -29,7 +29,7 @@ public class AddCustomer implements MenuItem {
         addCustomer(newCustomer, customerList);
     }
 
-    void addCustomer(Customer customer, List<Customer> customerList) {
+    private void addCustomer(Customer customer, CustomerList customerList) {
         customerList.add(customer);
     }
 }

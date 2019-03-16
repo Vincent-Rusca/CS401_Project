@@ -1,6 +1,7 @@
 package menu.text.order;
 
 import Customers.Customer;
+import Customers.CustomerList;
 import Orders.Order;
 import menu.MenuItem;
 import menu.text.customer.DisplayCustomers;
@@ -15,10 +16,10 @@ import java.util.Scanner;
 public class AddOrder implements MenuItem {
 
     @Override
-    public void display(Scanner scanner, List<Customer> customerList) {
-        new DisplayCustomers().displayNames(customerList);
+    public void display(Scanner scanner, CustomerList customerList) {
+        DisplayCustomers.displayNames(customerList);
         System.out.println("input the customer to add an order to");
-        int customer = scanner.nextByte();
+        int customer = scanner.nextInt();
         System.out.println("enter the item to order");
         String item = scanner.next();
         System.out.println("enter the cost of the item");
@@ -33,9 +34,9 @@ public class AddOrder implements MenuItem {
         addOrder(customerList, customer, order);
     }
 
-    void addOrder(List<Customer> customerList, int customerChoice, Order order) {
-        Customer customer = customerList.get(customerChoice);
-        customerList.remove(customerChoice);
+    private void addOrder(CustomerList customerList, int customerChoice, Order order) {
+        Customer customer = customerList.getCustomerList().get(customerChoice);
+        customerList.remove(customerList.getCustomerList().get(customerChoice));
         customer.addToOrderList(order);
         customerList.add(customer);
     }

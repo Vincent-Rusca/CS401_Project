@@ -1,6 +1,7 @@
 package menu.text;
 
 import Customers.Customer;
+import Customers.CustomerList;
 import menu.Menu;
 import menu.MenuItem;
 import menu.text.customer.AddCustomer;
@@ -19,20 +20,21 @@ import java.util.Scanner;
 
 /**
  * Text implementation of the menu interface
+ * NOTE: the menu does not accept spaces for input
  * @author Neil Moon
  */
+// TODO: maybe it would be better to implement both Menu and MenuItem for consistency with the other menus
 public class TextMenu implements Menu {
 
     private static final Scanner scanner = new Scanner(System.in);
-    // TODO: use a CustomerList class once it gets new features (such as list.get)
-    private List<Customer> customerList;
+    private CustomerList customerList;
     private List<MenuItem> options;
 
     /**
      * initialize a new menu without any customers
      */
     public TextMenu() {
-        customerList = new ArrayList<>();
+        customerList = new CustomerList();
         options = new ArrayList<>();
         options.addAll(Arrays.asList(new AddCustomer(), new ModifyCustomer(), new DeleteCustomer(), new DisplayCustomers(),
                 new AddOrder(), new DisplayOrders(), new RemoveOrder(), new ModifyOrder()));
@@ -42,8 +44,8 @@ public class TextMenu implements Menu {
      * initialize a new menu with predetermined customers
      * @param customerList the already existing customers
      */
-    public TextMenu(List<Customer> customerList) {
-        super();
+    public TextMenu(CustomerList customerList) {
+        this();
         this.customerList = customerList;
     }
 

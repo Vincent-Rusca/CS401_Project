@@ -2,23 +2,26 @@ package menu.text.customer;
 
 import Customers.Address;
 import Customers.Customer;
+import Customers.CustomerList;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
 public class DeleteCustomerTest {
 
-    List<Customer> customerList;
-    Customer newCustomer;
-    Customer newCustomer2;
+    private CustomerList customerList;
+    private Customer newCustomer;
+    private Customer newCustomer2;
 
     @Before
     public void setUp() {
-        customerList = new ArrayList<>();
+        customerList = new CustomerList();
         Address testAddress = new Address("1234", "5678", "abc", "def");
         newCustomer = new Customer("name", 12, testAddress);
         customerList.add(newCustomer);
@@ -28,8 +31,13 @@ public class DeleteCustomerTest {
 
     @Test
     public void customerDeleted() {
-        new DeleteCustomer().deleteCustomer(0, customerList);
-        assertEquals(newCustomer2, customerList.get(0));
+        DeleteCustomer delete = new DeleteCustomer();
+        String inputString = "0";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
+        Scanner scanner = new Scanner(inputStream);
+        delete.display(scanner, customerList);
+        assertEquals(1, customerList.getCustomerList().size());
+        assertEquals(newCustomer2, customerList.getCustomerList().get(0));
     }
 
 }

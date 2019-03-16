@@ -1,6 +1,8 @@
 package menu.text.order;
 
 import Customers.Customer;
+import Customers.CustomerList;
+import Orders.OrderList;
 import menu.MenuItem;
 import menu.text.customer.DisplayCustomers;
 
@@ -14,11 +16,11 @@ import java.util.Scanner;
 public class DisplayOrders implements MenuItem {
 
     @Override
-    public void display(Scanner scanner, List<Customer> customerList) {
-        new DisplayCustomers().displayNames(customerList);
+    public void display(Scanner scanner, CustomerList customerList) {
+        DisplayCustomers.displayNames(customerList);
         System.out.println("enter the customer to look at the orders of");
         int customerSelection = scanner.nextInt();
-        Customer customer = customerList.get(customerSelection);
+        Customer customer = customerList.getCustomerList().get(customerSelection);
         customer.getOrderList().showOrders();
     }
 }

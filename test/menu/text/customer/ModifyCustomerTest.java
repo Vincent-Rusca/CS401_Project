@@ -7,11 +7,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
-public class AddCustomerTest {
+public class ModifyCustomerTest {
 
     private Customer customer;
     private CustomerList customerList;
@@ -21,17 +22,18 @@ public class AddCustomerTest {
         customerList = new CustomerList();
         Address testAddress = new Address("1234", "5678", "abc", "def");
         customer = new Customer("name", 12, testAddress);
+        customerList.add(customer);
     }
 
     @Test
-    public void customerAdded() {
-        AddCustomer add = new AddCustomer();
-        String inputString = "name\n12\nnewname\n1234\n5678\nabc\ndef";
+    public void customerModified() {
+        ModifyCustomer modify = new ModifyCustomer();
+        String inputString = "0\n1\nnewname";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
         Scanner scanner = new Scanner(inputStream);
-        add.display(scanner, customerList);
-        // TODO: remove the getCustomerName call if customer gets an equals override
-        assertEquals(1, customerList.getCustomerList().size());
-        assertEquals(customer.getCustomerName(), customerList.getCustomerList().get(0).getCustomerName());
+        modify.display(scanner, customerList);
+        Customer customer2 = customer;
+        customer2.setCustomerName("newname");
+        assertEquals(customer, customer2);
     }
 }
