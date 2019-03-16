@@ -20,6 +20,10 @@ public class DisplayCustomers implements MenuItem {
         }
     }
 
+    /**
+     * display a shorter list of customers, using only their names
+     * @param customerList list to display
+     */
     public static void displayNames(CustomerList customerList) {
         for (int i = 0; i < customerList.getCustomerList().size(); ++i) {
             System.out.println(i + " - " + customerList.getCustomerList().get(i).getCustomerName());

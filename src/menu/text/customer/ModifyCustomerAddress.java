@@ -8,10 +8,18 @@ import menu.MenuItem;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * modify a customer's address only, called from {@link ModifyCustomer}
+ * @author Neil Moon
+ */
 public class ModifyCustomerAddress implements MenuItem {
 
     private Customer customer;
 
+    /**
+     * modify the given customer
+     * @param customer customer to modify
+     */
     ModifyCustomerAddress(Customer customer) {
         this.customer = customer;
     }
@@ -30,6 +38,10 @@ public class ModifyCustomerAddress implements MenuItem {
         modifyAddress(address);
     }
 
+    /**
+     * change the address of the customer in this class
+     * @param address new address
+     */
     private void modifyAddress(Address address) {
         customer.setAddress(address);
     }

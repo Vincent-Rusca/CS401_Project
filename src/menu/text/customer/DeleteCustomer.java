@@ -5,6 +5,10 @@ import menu.MenuItem;
 
 import java.util.Scanner;
 
+/**
+ * delete a customer
+ * @author Neil Moon
+ */
 public class DeleteCustomer implements MenuItem {
 
     @Override
@@ -15,6 +19,11 @@ public class DeleteCustomer implements MenuItem {
         deleteCustomer(customer, customerList);
     }
 
+    /**
+     * remove the customer from the list
+     * @param customer number of the customer to remove
+     * @param customerList list to remove from
+     */
     private void deleteCustomer(int customer, CustomerList customerList) {
         customerList.remove(customerList.getCustomerList().get(customer));
     }

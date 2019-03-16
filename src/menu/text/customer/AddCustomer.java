@@ -7,6 +7,10 @@ import menu.MenuItem;
 
 import java.util.Scanner;
 
+/**
+ * add a customer to the customer list
+ * @author Neil Moon
+ */
 public class AddCustomer implements MenuItem {
 
     @Override
@@ -29,6 +33,11 @@ public class AddCustomer implements MenuItem {
         addCustomer(newCustomer, customerList);
     }
 
+    /**
+     * add the given customer to the list
+     * @param customer customer to add
+     * @param customerList list to add to
+     */
     private void addCustomer(Customer customer, CustomerList customerList) {
         customerList.add(customer);
     }

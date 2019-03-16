@@ -49,8 +49,6 @@ public class TextMenu implements Menu {
         this.customerList = customerList;
     }
 
-
-
     /**
      * start running the menu
      */

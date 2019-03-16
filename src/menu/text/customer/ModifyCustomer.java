@@ -27,6 +27,13 @@ public class ModifyCustomer implements MenuItem {
         customerList.add(customer);
     }
 
+    /**
+     * modify a value of the given customer
+     * @param scanner scanner to get input from
+     * @param customer customer to modify
+     * @param customerList list containing the customer
+     * @param input the choice of what to modify
+     */
     private void modify(Scanner scanner, Customer customer, CustomerList customerList, int input) {
         switch (input) {
             case 1:
