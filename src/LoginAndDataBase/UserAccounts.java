@@ -39,7 +39,7 @@ public class UserAccounts implements Serializable {
     public String promptUsername() {
         Scanner testUser = new Scanner(System.in);
         System.out.println("Username: ");
-        username = testUser.next();
+        username = testUser.next().toLowerCase();
         return username;
     }
 
@@ -47,7 +47,7 @@ public class UserAccounts implements Serializable {
     public String promtPassword() {
         Scanner testPass = new Scanner(System.in);
         System.out.println("Password: ");
-        password = testPass.nextLine();
+        password = testPass.nextLine().toLowerCase();
         return password;
     }
 
@@ -76,9 +76,9 @@ public class UserAccounts implements Serializable {
         DataBase newFile = new DataBase();
         Scanner input = new Scanner(System.in);
         System.out.println("Please Enter Your Desired Username: ");
-        String setUser = input.nextLine();
+        String setUser = input.nextLine().toLowerCase();
         System.out.println("Please Enter Your Desired Password: ");
-        String setPass = input.nextLine();
+        String setPass = input.nextLine().toLowerCase();
 
         setUsername(setUser);
         setPassword(setPass);
