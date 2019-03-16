@@ -20,7 +20,7 @@ public class DataBase implements Serializable {
     * This was put in for future functionality for the project. */
     public void loadUserData(String user)
     {
-        File test = new File("src/database/"+user+".txt").getAbsoluteFile();
+        File test = new File("src/database/"+user.toLowerCase()+".txt").getAbsoluteFile();
         try {
             if(test.isFile()) {
                 /*This will eventually load the users data that they have saved.
@@ -44,12 +44,17 @@ public class DataBase implements Serializable {
         Scanner userdata = new Scanner(test);
         userdata.useDelimiter(":|\\r\\n");
         while (userdata.hasNext()){
-            String username = userdata.next();
-            String password = userdata.next();
+            String username = userdata.next().toLowerCase();
+            String password = userdata.next().toLowerCase();
             set.add(new UserAccounts(username,password));
         }
         userdata.close();
     }
     /*Used to get the useraccounts hashSet*/
     public Set<UserAccounts> getUserAccounts() { return set; }
+
+    public static void main(String[] args) throws IOException {
+        Login test = new Login();
+        test.login();
+    }
 }

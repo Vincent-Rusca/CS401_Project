@@ -2,9 +2,6 @@ package LoginAndDataBase;
 /*This class is used to handle all of the login for the program.
 * It prompts the user with a menu and then validates their credentials*/
 
-import menu.Menu;
-import menu.text.TextMenu;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -47,7 +44,6 @@ public class Login implements Serializable {
     protected void validLogin() {
         DataBase userPass = new DataBase();
         try {
-            Menu menu = new TextMenu();
             UserAccounts user = new UserAccounts();
             userPass.loadUserAccounts();
             Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
@@ -57,7 +53,6 @@ public class Login implements Serializable {
             if (userAccountsSet.contains(newAccount)) {
                 System.out.println("Login Successful");
                 userPass.loadUserData(username);
-                menu.start();
             } else {
                 System.out.println("Wrong password or User account doesn't exist." +
                         " Please register if the user account doesn't exist.");
