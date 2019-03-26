@@ -37,7 +37,7 @@ public class MenuActivity extends AppCompatActivity {
         customerList.add(newCustomer);
         // END TESTING CODE **************************************************************
 
-        //intent.putExtra("customerList", customerList);
+        intent.putExtra("customerList", customerList);
         startActivity(intent);
     }
 
