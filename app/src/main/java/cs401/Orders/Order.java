@@ -8,9 +8,10 @@
 
 package cs401.Orders;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Order{
+public class Order implements Serializable {
     private String item;
     private double cost;
     private int quantity;

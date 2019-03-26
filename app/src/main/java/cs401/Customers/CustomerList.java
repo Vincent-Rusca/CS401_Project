@@ -2,10 +2,11 @@
 
 package cs401.Customers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerList {
+public class CustomerList implements Serializable {
     List<Customer> customerList;
 
     // constructors

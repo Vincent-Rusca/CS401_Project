@@ -2,7 +2,9 @@
 
 package cs401.Customers;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
     // address fields
     String streetAddress;
     String cityAddress;

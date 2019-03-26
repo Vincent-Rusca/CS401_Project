@@ -2,7 +2,9 @@
 
 package cs401.Customers;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     String customerName;
     String customerID;
     Address address;

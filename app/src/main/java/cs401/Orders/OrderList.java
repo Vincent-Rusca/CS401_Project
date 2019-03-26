@@ -4,13 +4,14 @@
 
 package cs401.Orders;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 /* Will be a list of [order]s that has the ability to return [Order] objects,and be reorganized by a certain characteristic
   * of the [order]s, add and remove [Order] objects, and have the ability to show the [orderList]'s contents */
-public class OrderList{
+public class OrderList implements Serializable {
     private List<Order> orderList;
     private String orderListName;
 
