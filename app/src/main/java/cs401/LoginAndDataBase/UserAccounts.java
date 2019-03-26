@@ -82,7 +82,7 @@ public class UserAccounts implements Serializable {
 
         setUsername(setUser);
         setPassword(setPass);
-        File uaFile = new File("src/cs401.database/useraccount.txt").getAbsoluteFile();
+        File uaFile = new File("app/src/main/java/cs401/database/useraccount.txt").getAbsoluteFile();
         BufferedWriter saveUser = new BufferedWriter(new FileWriter(uaFile,true));
         /*ON MAC/LINUS REMOVE \r. \r IS ONLY ON WINDOWS SYSTEMS*/
         String save = setUser +":"+setPass+"\r\n";

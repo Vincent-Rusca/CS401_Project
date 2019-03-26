@@ -20,7 +20,7 @@ public class DataBase implements Serializable {
     * This was put in for future functionality for the project. */
     public void loadUserData(String user)
     {
-        File test = new File("app/src/main/java/cs401.database/"+user+".txt").getAbsoluteFile();
+        File test = new File("app/src/main/java/cs401/database/"+user+".txt").getAbsoluteFile();
         try {
             if(test.isFile()) {
                 /*This will eventually load the users data that they have saved.
@@ -40,7 +40,7 @@ public class DataBase implements Serializable {
     /*This is used to load the useraccounts.txt file into a hashSet so we are able
     * to compare it for the validLogin function in the Login class*/
     public void loadUserAccounts() throws FileNotFoundException {
-        File test = new File("app/src/main/java/cs401.database/useraccount.txt").getAbsoluteFile();
+        File test = new File("app/src/main/java/cs401/database/useraccount.txt").getAbsoluteFile();
         Scanner userdata = new Scanner(test);
         userdata.useDelimiter(":|\\r\\n");
         while (userdata.hasNext()){
