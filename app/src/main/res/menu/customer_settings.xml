@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/sortByName"
+        android:id="@+id/cust_sort_by_name"
         android:title="Sort by name"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/sortByID"
+        android:id="@+id/cust_sort_by_id"
         android:title="Sort by ID"
         app:showAsAction="never"/>
 
