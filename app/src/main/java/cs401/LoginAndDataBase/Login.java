@@ -50,7 +50,7 @@ public class Login implements Serializable {
             UserAccounts user = new UserAccounts();
             userPass.loadUserAccounts();
             Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
-            String username = user.promptUsername();
+            String username = user.getUsername();
             String password = user.promtPassword();
             UserAccounts newAccount = new UserAccounts(username, password);
             if (userAccountsSet.contains(newAccount)) {
