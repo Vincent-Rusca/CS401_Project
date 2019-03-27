@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/modifyCustList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/name_and_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/modifyCustList"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:id="@+id/modify_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_name"
+            android:onClick="modifyName"/>
+        <Button
+            android:id="@+id/modify_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_address"
+            android:layout_toRightOf="@id/modify_name"
+            android:layout_toEndOf="@id/modify_name"
+            android:onClick="modifyAddress"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_and_address"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:id="@+id/modify_add_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_add_order"
+            android:onClick="addOrder"/>
+        <Button
+            android:id="@+id/modify_modify_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_modify_order"
+            android:layout_toRightOf="@id/modify_add_order"
+            android:layout_toEndOf="@id/modify_add_order"
+            android:onClick="modifyOrder"/>
+        <Button
+            android:id="@+id/modify_delete_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_delete_order"
+            android:layout_toRightOf="@id/modify_modify_order"
+            android:layout_toEndOf="@id/modify_modify_order"
+            android:onClick="removeOrder"/>
+    </RelativeLayout>
+
+</RelativeLayout>

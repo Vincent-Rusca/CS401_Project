@@ -17,7 +17,7 @@ public class CustomerListRVA extends RecyclerView.Adapter<CustomerListRVA.ViewHo
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    CustomerListRVA(Context context, CustomerList data) {
+    public CustomerListRVA(Context context, CustomerList data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -60,12 +60,20 @@ public class CustomerListRVA extends RecyclerView.Adapter<CustomerListRVA.ViewHo
     }
 
     // convenience method for getting data at click position
-    Customer getItem(int id) {
+    public Customer getItem(int id) {
         return mData.getCustomerList().get(id);
     }
 
+    /**
+     * delete an item from the customer list
+     * @param location index of the list
+     */
+    public void removeItem(int location) {
+        mData.remove(location);
+    }
+
     // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 

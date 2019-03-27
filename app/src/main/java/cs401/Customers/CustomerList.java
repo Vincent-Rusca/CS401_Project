@@ -45,6 +45,10 @@ public class CustomerList implements Serializable {
         customerList.remove(customer);
     }
 
+    public void remove(int location) {
+        customerList.remove(location);
+    }
+
     // get the customerList
     public List<Customer> getCustomerList() {
         return customerList;
