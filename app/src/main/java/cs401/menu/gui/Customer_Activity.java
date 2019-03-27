@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import cs401.R;
 public class Customer_Activity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
 
     CustomerListRVA adapter;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
 
         CustomerList customerList = (CustomerList)getIntent().getExtras().getSerializable("customerList");
 
-        RecyclerView recyclerView = findViewById(R.id.custList);
+        recyclerView = findViewById(R.id.custList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CustomerListRVA(this, customerList);
         adapter.setClickListener(this);
@@ -45,4 +47,27 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        CustomerList customerList = (CustomerList)getIntent().getExtras().getSerializable("customerList");
+        switch(item.getItemId()) {
+            case R.id.cust_sort_by_name:
+                customerList.sortByName();
+                adapter = new CustomerListRVA(this, customerList);
+                adapter.setClickListener(this);
+                recyclerView.setAdapter(adapter);
+                return true;
+
+            case R.id.cust_sort_by_id:
+                customerList.sortByID();
+                adapter = new CustomerListRVA(this, customerList);
+                adapter.setClickListener(this);
+                recyclerView.setAdapter(adapter);
+                return true;
+
+
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
+    }
 }
