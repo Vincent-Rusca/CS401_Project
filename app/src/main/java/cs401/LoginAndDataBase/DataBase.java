@@ -5,12 +5,17 @@ package cs401.LoginAndDataBase;
 * The data isn't saved to the files yet but that will be implemented
 * in another assignment (save function).*/
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.os.Environment;
+
 import java.io.*;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class DataBase implements Serializable {
+public class DataBase extends Activity implements Serializable {
     private Set<UserAccounts> set = new HashSet<>();
 
     /*Loads the users file specific to their username.
@@ -39,8 +44,8 @@ public class DataBase implements Serializable {
     }
     /*This is used to load the useraccounts.txt file into a hashSet so we are able
     * to compare it for the validLogin function in the Login class*/
-    public void loadUserAccounts() throws FileNotFoundException {
-        File test = new File("app/src/main/java/cs401/database/useraccount.txt").getAbsoluteFile();
+    public void loadUserAccounts() throws IOException {
+        File test = new File("/app/src/main/assets/useraccount.txt").getCanonicalFile();
         Scanner userdata = new Scanner(test);
         userdata.useDelimiter(":|\\r\\n");
         while (userdata.hasNext()){

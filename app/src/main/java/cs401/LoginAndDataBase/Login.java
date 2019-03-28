@@ -61,7 +61,7 @@ public class Login implements Serializable {
                 System.out.println("Wrong password or User account doesn't exist." +
                         " Please register if the user account doesn't exist.");
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
