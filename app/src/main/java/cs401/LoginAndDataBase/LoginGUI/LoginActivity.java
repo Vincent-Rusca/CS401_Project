@@ -23,7 +23,7 @@ import cs401.menu.gui.MenuActivity;
 import cs401.menu.text.TextMenu;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button login;
+    private Button login, register;
     private EditText username, password;
     Login test = new Login();
 
@@ -34,10 +34,18 @@ public class LoginActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.loginbtn);
+        register = (Button)findViewById(R.id.registerbtn);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validLogin();
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registeruser = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registeruser);
             }
         });
     }
