@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 import java.util.Set;
-
+/*FILE REPLACED WITH LOGINACTIVITY IN HW2*/
 public class Login implements Serializable {
 
     /*This is the login menu for the users.
@@ -43,14 +43,14 @@ public class Login implements Serializable {
     /*This validates the users login credentials.
      * If the user exists, it will load their user files and got to the main menu.
      * If the user doesn't exist, it will ask them to register their account. */
-    protected void validLogin() {
+    public void validLogin() {
         DataBase userPass = new DataBase();
         try {
             Menu menu = new TextMenu();
             UserAccounts user = new UserAccounts();
             userPass.loadUserAccounts();
             Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
-            String username = user.promptUsername();
+            String username = user.getUsername();
             String password = user.promtPassword();
             UserAccounts newAccount = new UserAccounts(username, password);
             if (userAccountsSet.contains(newAccount)) {

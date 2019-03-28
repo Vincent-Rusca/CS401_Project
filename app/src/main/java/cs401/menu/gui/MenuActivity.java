@@ -32,15 +32,15 @@ public class MenuActivity extends AppCompatActivity {
         // FOR TESTING PURPOSES ONLY *****************************************************
         CustomerList customerList = new CustomerList();
         Address customerAddress = new Address("123 Easy St.", "Eureka", "CA", "94599");
-        Customer newCustomer = new Customer("Test Incorporated LLC", "1", customerAddress);
-        customerList.add(newCustomer);
-
-        customerAddress = new Address("45 Ocho St.", "Paris", "TX", "54554");
-        newCustomer = new Customer("Texas Cheese Toast Co.", "2", customerAddress);
+        Customer newCustomer = new Customer("Test Incorporated LLC", "4", customerAddress);
         customerList.add(newCustomer);
 
         customerAddress = new Address("69 Everyone Ln.", "Kansas City", "KS", "54321");
         newCustomer = new Customer("Wincest Properties LLC", "3", customerAddress);
+        customerList.add(newCustomer);
+
+        customerAddress = new Address("45 Ocho St.", "Paris", "TX", "54554");
+        newCustomer = new Customer("Texas Cheese Toast Co.", "2", customerAddress);
         customerList.add(newCustomer);
         // END TESTING CODE **************************************************************
 

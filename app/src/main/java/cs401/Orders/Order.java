@@ -1,3 +1,4 @@
+package cs401.Orders;
 /* Carlos Castillo
  * Created: 3.8.19
  * Description: will be able to take in order objects that include all necessary
@@ -5,8 +6,6 @@
  * an order list that can then be manipulated
  * Created: 3.8.19
  * Description: The Order class */
-
-package cs401.Orders;
 
 import java.io.Serializable;
 import java.util.Calendar;
