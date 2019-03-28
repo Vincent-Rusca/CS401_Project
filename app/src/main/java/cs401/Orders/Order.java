@@ -1,4 +1,4 @@
-package com.example.cs401groupwork2.orders;
+package cs401.Orders;
 /* Carlos Castillo
  * Created: 3.8.19
  * Description: will be able to take in order objects that include all necessary
