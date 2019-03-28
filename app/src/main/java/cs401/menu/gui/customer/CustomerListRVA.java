@@ -1,4 +1,4 @@
-package cs401.menu.gui;
+package cs401.menu.gui.customer;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

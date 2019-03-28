@@ -62,8 +62,8 @@
             android:name=".menu.gui.customer.AddCustomerActivity"
             android:label="@string/title_activity_add_customer"
             android:parentActivityName=".menu.gui.MenuActivity" />
-        <activity android:name=".menu.gui.Customer_Activity" />
-        <activity android:name=".menu.gui.Customer_Activity" />
+        <activity android:name=".menu.gui.customer.Customer_Activity" />
+        <activity android:name=".menu.gui.customer.Customer_Activity" />
 
 
         <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity">

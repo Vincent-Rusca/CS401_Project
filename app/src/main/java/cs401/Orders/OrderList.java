@@ -293,4 +293,12 @@ public class OrderList implements Serializable {
     public int getOrderListSize(){
         return orderList.size();
     }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void remove(int index) {
+        orderList.remove(index);
+    }
 }

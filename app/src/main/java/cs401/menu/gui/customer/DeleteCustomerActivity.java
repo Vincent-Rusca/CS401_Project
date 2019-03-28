@@ -8,7 +8,6 @@ import android.view.View;
 
 import cs401.Customers.CustomerList;
 import cs401.R;
-import cs401.menu.gui.CustomerListRVA;
 
 public class DeleteCustomerActivity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
 

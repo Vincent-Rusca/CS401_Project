@@ -10,6 +10,7 @@ import cs401.Customers.Customer;
 import cs401.Customers.CustomerList;
 import cs401.R;
 import cs401.menu.gui.customer.AddCustomerActivity;
+import cs401.menu.gui.customer.Customer_Activity;
 import cs401.menu.gui.customer.DeleteCustomerActivity;
 import cs401.menu.gui.customer.DisplayCustomerActivity;
 import cs401.menu.gui.customer.ModifyCustomerActivity;

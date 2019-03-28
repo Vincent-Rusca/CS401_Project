@@ -10,9 +10,7 @@ import android.widget.Toast;
 
 import cs401.Customers.Customer;
 import cs401.Customers.CustomerList;
-import cs401.Orders.OrderList;
 import cs401.R;
-import cs401.menu.gui.CustomerListRVA;
 import cs401.menu.gui.customer.modify.ModifyCustomerAddressActivity;
 import cs401.menu.gui.customer.modify.ModifyCustomerNameActivity;
 import cs401.menu.gui.order.AddOrderActivity;
