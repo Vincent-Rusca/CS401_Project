@@ -12,40 +12,56 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".menu.gui.order.modify.ModifyOrderDescriptionActivity"
+            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+        <activity
+            android:name=".menu.gui.order.modify.ModifyOrderInvoiceActivity"
+            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+        <activity
+            android:name=".menu.gui.order.modify.ModifyOrderQuantityActivity"
+            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+        <activity
+            android:name=".menu.gui.order.modify.ModifyOrderCostActivity"
+            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+        <activity
+            android:name=".menu.gui.order.modify.ModifyOrderNameActivity"
+            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+        <activity
             android:name=".menu.gui.order.DeleteOrderActivity"
-            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"
-            android:label="@string/title_activity_delete_order"/>
+            android:label="@string/title_activity_delete_order"
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity" />
         <activity
             android:name=".menu.gui.order.ModifyOrderActivity"
-            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"
-            android:label="@string/title_activity_modify_order"/>
-        <activity android:name=".menu.gui.order.AddOrderActivity"
-            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"
-            android:label="@string/title_activity_add_order"/>
+            android:label="@string/title_activity_modify_order"
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity" />
         <activity
-            android:name=".menu.gui.customer.ModifyCustomerAddressActivity"
-            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"
-            android:label="@string/title_activity_modify_customer_address"/>
+            android:name=".menu.gui.order.AddOrderActivity"
+            android:label="@string/title_activity_add_order"
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity" />
         <activity
-            android:name=".menu.gui.customer.ModifyCustomerNameActivity"
-            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"
-            android:label="@string/title_activity_modify_customer_name"/>
+            android:name=".menu.gui.customer.modify.ModifyCustomerAddressActivity"
+            android:label="@string/title_activity_modify_customer_address"
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity" />
+        <activity
+            android:name=".menu.gui.customer.modify.ModifyCustomerNameActivity"
+            android:label="@string/title_activity_modify_customer_name"
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity" />
         <activity
             android:name=".menu.gui.customer.ModifyCustomerActivity"
-            android:parentActivityName=".menu.gui.MenuActivity"
-            android:label="@string/title_activity_modify_customer"/>
+            android:label="@string/title_activity_modify_customer"
+            android:parentActivityName=".menu.gui.MenuActivity" />
         <activity
             android:name=".menu.gui.customer.DisplayCustomerActivity"
-            android:parentActivityName=".menu.gui.MenuActivity"
-            android:label="@string/title_activity_display_customer"/>
+            android:label="@string/title_activity_display_customer"
+            android:parentActivityName=".menu.gui.MenuActivity" />
         <activity
             android:name=".menu.gui.customer.DeleteCustomerActivity"
-            android:parentActivityName=".menu.gui.MenuActivity"
-            android:label="@string/title_activity_delete_customer"/>
+            android:label="@string/title_activity_delete_customer"
+            android:parentActivityName=".menu.gui.MenuActivity" />
         <activity
             android:name=".menu.gui.customer.AddCustomerActivity"
-            android:parentActivityName=".menu.gui.MenuActivity"
-            android:label="@string/title_activity_add_customer"/>
+            android:label="@string/title_activity_add_customer"
+            android:parentActivityName=".menu.gui.MenuActivity" />
         <activity android:name=".menu.gui.Customer_Activity" />
         <activity
             android:name=".menu.gui.MenuActivity"

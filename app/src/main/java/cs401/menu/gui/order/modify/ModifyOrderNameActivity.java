@@ -1,15 +1,15 @@
-package cs401.menu.gui.customer;
+package cs401.menu.gui.order.modify;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cs401.R;
 
-public class ModifyCustomerAddressActivity extends AppCompatActivity {
+public class ModifyOrderNameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modify_customer_address);
+        setContentView(R.layout.activity_modify_order_name);
     }
 }
