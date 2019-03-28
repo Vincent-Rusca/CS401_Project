@@ -1,4 +1,4 @@
-package cs401.menu.gui;
+package cs401.menu.gui.order;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,43 +7,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cs401.Customers.Customer;
-import cs401.Customers.CustomerList;
+import cs401.Orders.Order;
+import cs401.Orders.OrderList;
 import cs401.R;
+import cs401.menu.gui.CustomerListRVA;
 
-public class CustomerListRVA extends RecyclerView.Adapter<CustomerListRVA.ViewHolder> {
-    private CustomerList mData;
+public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderListRecyclerViewAdapter.ViewHolder> {
+    private OrderList mData;
     private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    private OrderListRecyclerViewAdapter.ItemClickListener mClickListener;
 
-    // data is passed into the constructor
-    public CustomerListRVA(Context context, CustomerList data) {
+    public OrderListRecyclerViewAdapter(Context context, OrderList data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
 
-    // inflates the row layout from xml when needed
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OrderListRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.customerlist_row, parent, false);
-        return new ViewHolder(view);
+        return new OrderListRecyclerViewAdapter.ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData.getCustomerList().get(position).getCustomerName();
-        holder.myTextView.setText(animal);
+    public void onBindViewHolder(OrderListRecyclerViewAdapter.ViewHolder holder, int position) {
+        String text = mData.getOrderByIndex(position).getItemName();
+        holder.myTextView.setText(text);
     }
 
-    // total number of rows
     @Override
     public int getItemCount() {
-        return mData.getCustomerList().size();
+        return mData.size();
     }
 
-
-    // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
 
@@ -59,21 +54,20 @@ public class CustomerListRVA extends RecyclerView.Adapter<CustomerListRVA.ViewHo
         }
     }
 
-    // convenience method for getting data at click position
-    public Customer getItem(int id) {
-        return mData.getCustomerList().get(id);
+    public Order getItem(int id) {
+        return mData.getOrderByIndex(id);
     }
 
     /**
-     * delete an item from the customer list
+     * delete an item from the order list
      * @param location index of the list
      */
     public void removeItem(int location) {
-        mData.remove(location);
+        mData.removeOrderByIndex(location);
     }
 
     // allows clicks events to be caught
-    public void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(OrderListRecyclerViewAdapter.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
@@ -82,6 +76,3 @@ public class CustomerListRVA extends RecyclerView.Adapter<CustomerListRVA.ViewHo
         void onItemClick(View view, int position);
     }
 }
-
-
-

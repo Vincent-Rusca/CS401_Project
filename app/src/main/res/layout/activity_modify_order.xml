@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/modifyOrderList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/name_and_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/modifyOrderList"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:id="@+id/modify_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_name"
+            android:onClick="modifyName"/>
+        <Button
+            android:id="@+id/modify_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_cost"
+            android:layout_toRightOf="@id/modify_name"
+            android:layout_toEndOf="@id/modify_name"
+            android:onClick="modifyCost"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/quantity_and_invoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_and_cost"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:id="@+id/modify_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_quantity"
+            android:onClick="modifyQuantity"/>
+        <Button
+            android:id="@+id/modify_invoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_invoice"
+            android:layout_toRightOf="@id/modify_quantity"
+            android:layout_toEndOf="@id/modify_quantity"
+            android:onClick="modifyInvoice"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantity_and_invoice"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:id="@+id/modify_delete_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_description"
+            android:layout_toRightOf="@id/modify_modify_order"
+            android:layout_toEndOf="@id/modify_modify_order"
+            android:onClick="modifyDescription"/>
+    </RelativeLayout>
+
+</RelativeLayout>

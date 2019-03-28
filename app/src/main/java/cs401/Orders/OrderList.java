@@ -283,9 +283,11 @@ public class OrderList implements Serializable {
 
     // isEmpty()
     public boolean isEmpty() {
-        if(orderList.isEmpty())
-            return true;
-        return false;
+        return orderList.isEmpty();
+    }
+
+    public int size() {
+        return orderList.size();
     }
 
     public int getOrderListSize(){

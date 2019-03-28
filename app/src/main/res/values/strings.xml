@@ -1,8 +1,48 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_add_customer">Add Customer</string>
+    <string name="title_activity_delete_customer">Delete Customer</string>
+    <string name="title_activity_display_customer">Display Customers</string>
+    <string name="title_activity_modify_customer">Modify Customer</string>
+    <string name="title_activity_modify_customer_name">Modify Customer Name</string>
+    <string name="title_activity_modify_customer_address">Modify Customer Address</string>
+    <string name="title_activity_add_order">Add Order</string>
+    <string name="title_activity_delete_order">Delete Order</string>
+    <string name="title_activity_modify_order">Modify Order</string>
 
+    <string name="menu_add">Add Customer</string>
+    <string name="menu_modify">Modify Customer</string>
+    <string name="menu_delete">Delete Customer</string>
+    <string name="menu_show">Show Customers</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_cancel">Cancel</string>
+
+    <string name="customer_name">Name:</string>
+    <string name="customer_id">ID:</string>
+    <string name="customer_street">Street Address:</string>
+    <string name="customer_city">City:</string>
+    <string name="customer_state">State:</string>
+    <string name="customer_zip">Zip/Postal Code:</string>
+    <string name="customer_display_title">Customer Info</string>
     <string name="customer_button">Customer Menu</string>
+
+    <string name="modify_name">Modify Name</string>
+    <string name="modify_address">Modfiy Address</string>
+    <string name="modify_add_order">Add Order</string>
+    <string name="modify_modify_order">Modify Order</string>
+    <string name="modify_delete_order">Delete Order</string>
+    <string name="modify_cost">Modify Cost</string>
+    <string name="modify_quantity">Modify Quantity</string>
+    <string name="modify_invoice">Modify Invoice Number</string>
+    <string name="modify_description">Modify Description</string>
+
+    <string name="order_name">Name:</string>
+    <string name="order_cost">Cost:</string>
+    <string name="order_quantity">Quantity:</string>
+    <string name="order_invoice">Invoice Number:</string>
+    <string name="order_description">Description:</string>
+
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
