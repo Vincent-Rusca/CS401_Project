@@ -44,7 +44,7 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_customer_settings, menu);
+        inflater.inflate(R.menu.menu_order_sort, menu);
 
         return true;
     }
