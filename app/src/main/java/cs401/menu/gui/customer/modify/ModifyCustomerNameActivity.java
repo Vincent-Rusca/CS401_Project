@@ -2,18 +2,18 @@ package cs401.menu.gui.customer.modify;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 
 import cs401.Customers.Customer;
-import cs401.Customers.CustomerList;
 import cs401.R;
-import cs401.menu.gui.CustomerListRVA;
 import cs401.menu.gui.CustomerListStateManager;
+import cs401.menu.gui.Modifier;
 
-public class ModifyCustomerNameActivity extends AppCompatActivity {
+/**
+ * modify a customer's name
+ */
+public class ModifyCustomerNameActivity extends AppCompatActivity implements Modifier {
 
     Customer customer;
 
@@ -25,6 +25,7 @@ public class ModifyCustomerNameActivity extends AppCompatActivity {
         customer = CustomerListStateManager.getInstance().getCustomer(index);
     }
 
+    @Override
     public void save(View view) {
         CustomerListStateManager customerListStateManager = CustomerListStateManager.getInstance();
         customerListStateManager.removeCustomer(customer);

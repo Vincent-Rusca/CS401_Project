@@ -11,12 +11,14 @@ import android.view.View;
 
 import cs401.Customers.CustomerList;
 import cs401.R;
-import cs401.menu.gui.CustomerListRVA;
 import cs401.menu.gui.CustomerListStateManager;
 
-public class DeleteCustomerActivity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
+/**
+ * Delete a customer from the list
+ */
+public class DeleteCustomerActivity extends AppCompatActivity implements CustomerListRecyclerViewActivity.ItemClickListener {
 
-    CustomerListRVA customerListAdapter;
+    CustomerListRecyclerViewActivity customerListAdapter;
     CustomerList customerList;
     RecyclerView recyclerView;
 
@@ -28,7 +30,7 @@ public class DeleteCustomerActivity extends AppCompatActivity implements Custome
         customerList = CustomerListStateManager.getInstance().getCustomerList();
         recyclerView = findViewById(R.id.deleteCustList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        customerListAdapter = new CustomerListRVA(this, customerList);
+        customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
         customerListAdapter.setClickListener(this);
         recyclerView.setAdapter(customerListAdapter);
     }
@@ -43,7 +45,6 @@ public class DeleteCustomerActivity extends AppCompatActivity implements Custome
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_customer_sort, menu);
-
         return true;
     }
 
@@ -52,14 +53,14 @@ public class DeleteCustomerActivity extends AppCompatActivity implements Custome
         switch (item.getItemId()) {
             case R.id.cust_sort_by_name:
                 customerList.sortByName();
-                customerListAdapter = new CustomerListRVA(this, customerList);
+                customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
                 customerListAdapter.setClickListener(this);
                 recyclerView.setAdapter(customerListAdapter);
                 return true;
 
             case R.id.cust_sort_by_id:
                 customerList.sortByID();
-                customerListAdapter = new CustomerListRVA(this, customerList);
+                customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
                 customerListAdapter.setClickListener(this);
                 recyclerView.setAdapter(customerListAdapter);
                 return true;
