@@ -11,19 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginAndDataBase.LoginGUI.RegisterActivity"></activity>
-        <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity">
+        <activity android:name=".MainDriver.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LoginAndDataBase.LoginGUI.RegisterActivity" />
+        <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity">
+
         </activity>
         <activity android:name=".menu.gui.Customer_Activity" />
         <activity
             android:name=".menu.gui.MenuActivity"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

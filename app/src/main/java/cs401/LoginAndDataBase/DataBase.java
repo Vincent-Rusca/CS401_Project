@@ -45,10 +45,8 @@ public class DataBase extends Activity implements Serializable {
     /*This is used to load the useraccounts.txt file into a hashSet so we are able
     * to compare it for the validLogin function in the Login class*/
     public void loadUserAccounts() throws IOException {
-        InputStream inputStream = getAssets().open("useraccount.txt");
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        //File test = new File("app/src/main/assets/useraccount.txt").getAbsoluteFile();
-        Scanner userdata = new Scanner(bufferedReader);
+        File test = new File("app/src/main/assets/useraccount.txt").getAbsoluteFile();
+        Scanner userdata = new Scanner(test);
         userdata.useDelimiter(":|\\r\\n");
         while (userdata.hasNext()){
             String username = userdata.nextLine();

@@ -10,9 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.Set;
+
+import cs401.LoginAndDataBase.DataBase;
 import cs401.LoginAndDataBase.Database.DatabaseHelper;
+import cs401.LoginAndDataBase.UserAccounts;
 import cs401.R;
+import cs401.menu.Menu;
 import cs401.menu.gui.MenuActivity;
+import cs401.menu.text.TextMenu;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -46,7 +54,34 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(reg);
             }
         });
+
     }
+
+    /*private void login(){
+        DataBase userPass = new DataBase();
+        Menu menu = new TextMenu();
+        UserAccounts user = new UserAccounts();
+        try {
+            userPass.loadUserAccounts();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
+        String usr = username.getText().toString();
+        String pwd = password.getText().toString();
+        UserAccounts newAccount = new UserAccounts(usr, pwd);
+        if (userAccountsSet.contains(newAccount)) {
+            Toast.makeText(getApplicationContext(),"Login Successful", Toast.LENGTH_LONG).show();
+            //System.out.println("Login Successful");
+            userPass.loadUserData(usr);
+            menu.start();
+        } else {
+            Toast.makeText(getApplicationContext(), "Unsuccessful", Toast.LENGTH_LONG).show();
+            // System.out.println("Wrong password or User account doesn't exist." +
+            //         " Please register if the user account doesn't exist.");
+        }
+    }*/
+
     public void login(){
         String user = username.getText().toString();
         String pass = password.getText().toString();
@@ -58,7 +93,10 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Wrong Username or Password", Toast.LENGTH_LONG).show();
         }
     }
+
 }
+
+
 
        /* databaseHelper = new DatabaseHelper(LoginActivity.this);
         login.setOnClickListener(new View.OnClickListener() {
