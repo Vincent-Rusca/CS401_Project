@@ -36,12 +36,12 @@ public class UserAccounts implements Serializable {
     }
 
     /*Promps the user to input their login name and its checked in the validLogin function.*/
-    /*public String promptUsername() {
+    public String promptUsername() {
         Scanner testUser = new Scanner(System.in);
         System.out.println("Username: ");
         username = testUser.next();
         return username;
-    }*/
+    }
 
     /*Promps the user to input their password and its checked in the validLogin function.*/
     public String promtPassword() {

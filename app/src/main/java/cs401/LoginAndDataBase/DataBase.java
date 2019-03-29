@@ -8,7 +8,7 @@ package cs401.LoginAndDataBase;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.os.Environment;
+import android.util.Log;
 
 import java.io.*;
 import java.util.HashSet;
@@ -25,7 +25,7 @@ public class DataBase extends Activity implements Serializable {
     * This was put in for future functionality for the project. */
     public void loadUserData(String user)
     {
-        File test = new File("app/src/main/java/cs401/database/"+user+".txt").getAbsoluteFile();
+        File test = new File("app/src/main/assets/"+user+".txt").getAbsoluteFile();
         try {
             if(test.isFile()) {
                 /*This will eventually load the users data that they have saved.
@@ -45,15 +45,17 @@ public class DataBase extends Activity implements Serializable {
     /*This is used to load the useraccounts.txt file into a hashSet so we are able
     * to compare it for the validLogin function in the Login class*/
     public void loadUserAccounts() throws IOException {
-        File test = new File("/app/src/main/assets/useraccount.txt").getCanonicalFile();
-        Scanner userdata = new Scanner(test);
+        InputStream inputStream = getAssets().open("useraccount.txt");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        //File test = new File("app/src/main/assets/useraccount.txt").getAbsoluteFile();
+        Scanner userdata = new Scanner(bufferedReader);
         userdata.useDelimiter(":|\\r\\n");
         while (userdata.hasNext()){
-            String username = userdata.next();
-            String password = userdata.next();
+            String username = userdata.nextLine();
+            String password = userdata.nextLine();
             set.add(new UserAccounts(username,password));
         }
-        userdata.close();
+
     }
     /*Used to get the useraccounts hashSet*/
     public Set<UserAccounts> getUserAccounts() { return set; }

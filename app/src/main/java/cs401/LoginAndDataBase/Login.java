@@ -43,26 +43,22 @@ public class Login implements Serializable {
     /*This validates the users login credentials.
      * If the user exists, it will load their user files and got to the main menu.
      * If the user doesn't exist, it will ask them to register their account. */
-    public void validLogin() {
+    public void validLogin() throws IOException {
         DataBase userPass = new DataBase();
-        try {
-            Menu menu = new TextMenu();
-            UserAccounts user = new UserAccounts();
-            userPass.loadUserAccounts();
-            Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
-            String username = user.getUsername();
-            String password = user.promtPassword();
-            UserAccounts newAccount = new UserAccounts(username, password);
-            if (userAccountsSet.contains(newAccount)) {
-                System.out.println("Login Successful");
-                userPass.loadUserData(username);
-                menu.start();
-            } else {
-                System.out.println("Wrong password or User account doesn't exist." +
-                        " Please register if the user account doesn't exist.");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        Menu menu = new TextMenu();
+        UserAccounts user = new UserAccounts();
+        userPass.loadUserAccounts();
+        Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
+        String username = user.promptUsername();
+        String password = user.promtPassword();
+        UserAccounts newAccount = new UserAccounts(username, password);
+        if (userAccountsSet.contains(newAccount)) {
+            System.out.println("Login Successful");
+            userPass.loadUserData(username);
+            menu.start();
+        } else {
+            System.out.println("Wrong password or User account doesn't exist." +
+                    " Please register if the user account doesn't exist.");
         }
     }
 }
