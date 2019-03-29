@@ -58,7 +58,6 @@ public class ModifyOrderActivity extends AppCompatActivity implements OrderListR
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_order_sort, menu);
-
         return true;
     }
 
@@ -91,9 +90,6 @@ public class ModifyOrderActivity extends AppCompatActivity implements OrderListR
         }
     }
 
-    // TODO: sometimes these crash for unknown reasons... (low priority)
-    // might be crashing because the intent is the same name for each
-        // TODO: verify if fixed
     public void modifyName(View view) {
         Intent intentModifyName = new Intent(this, ModifyOrderNameActivity.class);
         intentModifyName.putExtra("customerIndex", customerIndex);

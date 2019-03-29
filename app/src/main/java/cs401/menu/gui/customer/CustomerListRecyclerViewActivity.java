@@ -1,4 +1,4 @@
-package cs401.menu.gui;
+package cs401.menu.gui.customer;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,13 +11,13 @@ import cs401.Customers.Customer;
 import cs401.Customers.CustomerList;
 import cs401.R;
 
-public class CustomerListRVA extends RecyclerView.Adapter<CustomerListRVA.ViewHolder> {
+public class CustomerListRecyclerViewActivity extends RecyclerView.Adapter<CustomerListRecyclerViewActivity.ViewHolder> {
     private CustomerList mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    public CustomerListRVA(Context context, CustomerList data) {
+    public CustomerListRecyclerViewActivity(Context context, CustomerList data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
