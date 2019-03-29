@@ -9,8 +9,12 @@ import cs401.Customers.Address;
 import cs401.Customers.Customer;
 import cs401.R;
 import cs401.menu.gui.CustomerListStateManager;
+import cs401.menu.gui.Modifier;
 
-public class ModifyCustomerAddressActivity extends AppCompatActivity {
+/**
+ * modify a customer's address
+ */
+public class ModifyCustomerAddressActivity extends AppCompatActivity implements Modifier {
 
     Customer customer;
 
@@ -22,6 +26,7 @@ public class ModifyCustomerAddressActivity extends AppCompatActivity {
         customer = CustomerListStateManager.getInstance().getCustomer(index);
     }
 
+    @Override
     public void save(View view) {
         CustomerListStateManager customerListStateManager = CustomerListStateManager.getInstance();
         String street = ((EditText) findViewById(R.id.modify_customer_street)).getText().toString();

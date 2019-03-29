@@ -13,13 +13,16 @@ import android.view.View;
 
 import cs401.Customers.Customer;
 import cs401.Customers.CustomerList;
+import cs401.Orders.Order;
 import cs401.R;
-import cs401.menu.gui.CustomerListRVA;
 import cs401.menu.gui.CustomerListStateManager;
 
-public class DisplayCustomerActivity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
+/**
+ * display a list of all the customers
+ */
+public class DisplayCustomerActivity extends AppCompatActivity implements CustomerListRecyclerViewActivity.ItemClickListener {
 
-    CustomerListRVA customerListAdapter;
+    CustomerListRecyclerViewActivity customerListAdapter;
     RecyclerView recyclerView;
     CustomerList customerList;
 
@@ -31,11 +34,16 @@ public class DisplayCustomerActivity extends AppCompatActivity implements Custom
         customerList = CustomerListStateManager.getInstance().getCustomerList();
         recyclerView = findViewById(R.id.displayCustList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        customerListAdapter = new CustomerListRVA(this, customerList);
+        customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
         customerListAdapter.setClickListener(this);
         recyclerView.setAdapter(customerListAdapter);
     }
 
+    /**
+     * build the message to display to the user
+     * @param customer customer to get info from
+     * @return a string used to display the customer's info
+     */
     private String buildStringMessage(Customer customer) {
         Resources resources = getResources();
         StringBuilder builder = new StringBuilder();
@@ -44,14 +52,26 @@ public class DisplayCustomerActivity extends AppCompatActivity implements Custom
         String street = resources.getString(R.string.customer_street) + " " + customer.getAddress().getStreetAddress() + "\n";
         String city = resources.getString(R.string.customer_city) + " " + customer.getAddress().getCityAddress() + "\n";
         String state = resources.getString(R.string.customer_state) + " " + customer.getAddress().getStateAddress() + "\n";
-        String zip = resources.getString(R.string.customer_zip) + " " + customer.getAddress().getZipAddress();
+        String zip = resources.getString(R.string.customer_zip) + " " + customer.getAddress().getZipAddress() + "\n";
         builder.append(name);
         builder.append(id);
         builder.append(street);
         builder.append(city);
         builder.append(state);
         builder.append(zip);
-        // TODO: append all orders to the end of this (medium priority)
+        builder.append("\nOrders:\n");
+        for (Order order : customer.getOrderList().getOrderList()) {
+            String orderName = "Name: " + order.getItemName() + "\n";
+            String orderCost = "Cost: " + order.getCost() + "\n";
+            String orderQuantity = "Quantity: " + order.getQuantity() + "\n";
+            String orderInvoice = "Invoice Number: " + order.getInvoiceNumber() + "\n";
+            String orderDescription = "Description: " + order.getItemDescr() + "\n";
+            builder.append(orderName);
+            builder.append(orderCost);
+            builder.append(orderQuantity);
+            builder.append(orderInvoice);
+            builder.append(orderDescription);
+        }
         return builder.toString();
     }
 
@@ -67,7 +87,6 @@ public class DisplayCustomerActivity extends AppCompatActivity implements Custom
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_customer_sort, menu);
-
         return true;
     }
 
@@ -76,14 +95,14 @@ public class DisplayCustomerActivity extends AppCompatActivity implements Custom
         switch (item.getItemId()) {
             case R.id.cust_sort_by_name:
                 customerList.sortByName();
-                customerListAdapter = new CustomerListRVA(this, customerList);
+                customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
                 customerListAdapter.setClickListener(this);
                 recyclerView.setAdapter(customerListAdapter);
                 return true;
 
             case R.id.cust_sort_by_id:
                 customerList.sortByID();
-                customerListAdapter = new CustomerListRVA(this, customerList);
+                customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
                 customerListAdapter.setClickListener(this);
                 recyclerView.setAdapter(customerListAdapter);
                 return true;
