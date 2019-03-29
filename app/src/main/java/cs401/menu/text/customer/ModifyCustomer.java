@@ -45,7 +45,6 @@ public class ModifyCustomer implements MenuItem {
                 customer.setCustomerID(scanner.nextLine());
                 break;
             case 3:
-                // TODO: break this off into something more consistent that follows oop better
                 ModifyCustomerAddress modfiyAddress = new ModifyCustomerAddress(customer);
                 modfiyAddress.display(scanner, customerList);
         }

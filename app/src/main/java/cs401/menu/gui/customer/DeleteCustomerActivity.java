@@ -9,6 +9,7 @@ import android.view.View;
 import cs401.Customers.CustomerList;
 import cs401.R;
 import cs401.menu.gui.CustomerListRVA;
+import cs401.menu.gui.CustomerListStateManager;
 
 public class DeleteCustomerActivity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
 
@@ -19,7 +20,7 @@ public class DeleteCustomerActivity extends AppCompatActivity implements Custome
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_customer);
 
-        CustomerList customerList = (CustomerList) getIntent().getSerializableExtra("customerList");
+        CustomerList customerList = CustomerListStateManager.getInstance().getCustomerList();
         RecyclerView recyclerView = findViewById(R.id.deleteCustList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         customerListAdapter = new CustomerListRVA(this, customerList);
@@ -27,10 +28,8 @@ public class DeleteCustomerActivity extends AppCompatActivity implements Custome
         recyclerView.setAdapter(customerListAdapter);
     }
 
-    // TODO: actually save the list being deleted. All this does is delete a copy of the data.
-    // This can be done with a singleton class.
     @Override
     public void onItemClick(View view, int position) {
-        customerListAdapter.removeItem(position);
+        CustomerListStateManager.getInstance().removeCustomer(position);
     }
 }

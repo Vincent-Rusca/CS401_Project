@@ -30,7 +30,6 @@ public class AddCustomerTest {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
         Scanner scanner = new Scanner(inputStream);
         add.display(scanner, customerList);
-        // TODO: remove the getCustomerName call if customer gets an equals override
         assertEquals(1, customerList.getCustomerList().size());
         assertEquals(customer.getCustomerName(), customerList.getCustomerList().get(0).getCustomerName());
     }

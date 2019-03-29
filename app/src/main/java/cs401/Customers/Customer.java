@@ -57,6 +57,8 @@ public class Customer implements Serializable {
     public void addToOrderList(cs401.Orders.Order order) {
         orderList.addOrder(order);
     }
-
+    public void removeFromOrderList(int index) {
+        orderList.removeOrderByIndex(index);
+    }
 
 }
