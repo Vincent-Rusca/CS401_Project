@@ -1,11 +1,6 @@
 package cs401.LoginAndDataBase.LoginGUI;
 
-import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,21 +12,22 @@ import cs401.LoginAndDataBase.Database.DatabaseHelper;
 import cs401.LoginAndDataBase.Database.User;
 import cs401.R;
 
+/* The purpose of this class is so that user's are able to create accounts for themselves.
+* The will have the Registration activity pop up if the choose it from the login screen.*/
+
 public class RegisterActivity extends AppCompatActivity {
     private Button signup;
     private EditText username, password, password2;
-    Boolean EditTextEmptyHolder;
-    String SQLiteDBQueryHolder;
     DatabaseHelper databaseHelper = new DatabaseHelper(this);
-    SQLiteDatabase sqLiteDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        /*Username and Password Text boxes*/
         username = (EditText) findViewById(R.id.regusername);
         password = (EditText) findViewById(R.id.regpassword);
+        /*SignUp button*/
         signup = (Button) findViewById(R.id.signupbtn);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,24 +41,33 @@ public class RegisterActivity extends AppCompatActivity {
                     String user = username.getText().toString();
                     String pass = password.getText().toString();
                     String pass2 = password2.getText().toString();
-
-                    // Checks to see if the passwords are equal
-                    if (!pass.equals(pass2)) {
+                    String userCheck = databaseHelper.searchUser(user);
+                    // Checks to see if the username already exists
+                    if(user.equals(userCheck)){
                         Toast nopass = Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT);
                         nopass.show();
-                    } else {
-                        // Add user to database
+                    }
+
+                    // Checks to see if the passwords are equal
+                    else if (!pass.equals(pass2)) {
+                        Toast nopass = Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT);
+                        nopass.show();
+                    }
+                    // Adds the username and password to the database
+                    else {
                         User u = new User();
                         u.setUsername(user);
                         u.setPassword(pass);
                         databaseHelper.addUser(u);
-                        Intent returnToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                        Intent returnToLogin = new Intent(RegisterActivity.this,LoginActivity.class);
                         startActivity(returnToLogin);
                     }
 
                 }
             }
         });
+
     }
 
 }
+

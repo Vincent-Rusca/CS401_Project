@@ -12,6 +12,11 @@ import cs401.LoginAndDataBase.Database.DatabaseHelper;
 import cs401.R;
 import cs401.menu.gui.MenuActivity;
 
+/*This is the login screen which is the starting screen for the whole application.
+* It will give the users the option to login or to register for an account.
+* When the successfully register it will take them back to this screen to login.
+* Once they are logged in it will display a menu for them.*/
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -52,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        /*Takes the user to the registration activity*/
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
