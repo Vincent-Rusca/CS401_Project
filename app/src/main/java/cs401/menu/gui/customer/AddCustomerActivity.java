@@ -27,5 +27,6 @@ public class AddCustomerActivity extends AppCompatActivity {
         String zip = ((EditText) findViewById(R.id.add_customer_zip)).getText().toString();
         Customer customer = new Customer(name, id, new Address(street, city, state, zip));
         CustomerListStateManager.getInstance().addCustomer(customer);
+        finish();
     }
 }
