@@ -28,40 +28,6 @@ public class OrderList implements Serializable {
 
     /* will add an [Order] object to the [orderList] */
     public void addOrder(Order newOrder){
-        Scanner reader = new Scanner(System.in);
-
-        /* will check to see if there is an already duplicate entry in the [orderList] */
-        for(int i = 0; i < orderList.size(); i++){
-            Order currOrder = orderList.get(i);
-
-            if(currOrder.getItemName().equals(newOrder.getItemName()) && currOrder.getCost() == newOrder.getCost()){        // if the item names and price are the same
-                orderList.get(i).addToQuantity(newOrder.getQuantity());     // just add the quantaties together
-                return;
-            } else if(currOrder.getItemName().equals(newOrder.getItemName()) && currOrder.getCost() != newOrder.getCost()){     // if the item names are the same but the prices are different
-                System.out.println(" ");
-                System.out.println("The order you entered has conflicting prices with an already existing order!");
-                System.out.println("The original price of [" + currOrder.getItemName() + "] is " + currOrder.getCost());
-                System.out.println("You entered " + newOrder.getCost());
-                System.out.println("Which of these two prices would you like to keep?");
-                System.out.println("[1] - " + currOrder.getCost());
-                System.out.println("[2] - " + newOrder.getCost());
-                int choice = Integer.parseInt(reader.nextLine());
-
-                while(choice != 1 && choice != 2){
-                    System.out.println("please select [1] or [2]");
-                    System.out.println("[1] - " + currOrder.getCost());
-                    System.out.println("[2] - " + newOrder.getCost());
-                    choice = Integer.parseInt(reader.nextLine());
-                }
-
-                if(choice == 1){
-                    orderList.get(i).setCost(currOrder.getCost());
-                } else if(choice == 2){
-                    orderList.get(i).setCost(newOrder.getCost());
-                }
-                orderList.get(i).addToQuantity(newOrder.getQuantity());
-            }
-        }
         orderList.add(newOrder);       // if its an entirely new entry, then just add it to the orderList
     }
 
@@ -87,7 +53,7 @@ public class OrderList implements Serializable {
     public void addToQuantity(String orderName, int num){
         Order currOrder = getOrderbyName(orderName);
         if(currOrder == null){
-            System.out.println("Could not find [" + orderName + "] in the orderList");
+            return;
         } else{
             currOrder.addToQuantity(num);
         }
@@ -95,34 +61,14 @@ public class OrderList implements Serializable {
 
     /* will print out all the [Order]'s information in a formated way */
     public void showOrders(){
-        String item = "<ITEM>", cost = "<COST>", quantity = "<QUANTITY>", invoice = "<INVOICE>", desc = "<DESCRIPTION>", date = "<DATE>", theTime = "<TIME>";
-        System.out.println("");
-        System.out.printf( "%-20s %-15s %-20s %-15s %-15s %-15s %-15s %n", item, cost, quantity, invoice, date, theTime, desc);
-        System.out.print("----------------------------------------------------------------------------------------------------------------------------");
-
-        for(Order currItem : orderList){
-            System.out.println("");
-            System.out.printf( "%-20s %-15s %-20s %-15s %d.%d.%d %8s:%d:%d         %-20s", currItem.getItemName(), currItem.getCost(), currItem.getQuantity(), currItem.getInvoiceNumber(),
-                    currItem.getMo(), currItem.getDay(), currItem.getYr(),
-                    currItem.getHour(), currItem.getMin(), currItem.getSec(),
-                    currItem.getItemDescr());
-        }
     }
 
     /* will remove the matching item name that the user inputs */
     public void removeByName(String itemName){
-        int initialsize = orderList.size();
         for(int i = 0; i < orderList.size(); i++){
             if(orderList.get(i).getItemName().equals(itemName)){
-                System.out.println(" ");
-                System.out.println("Removing [" + orderList.get(i).getItemName() + "] from the orderList");
-                orderList.remove(i);
                 break;
             }
-        }
-
-        if(initialsize == orderList.size()){
-            System.out.println("Could not find item: " + itemName);
         }
     }
 
@@ -133,8 +79,6 @@ public class OrderList implements Serializable {
                 return orderList.get(i);
             }
         }
-
-        System.out.println("Could not find item: " + itemName);
         return null;
     }
 
@@ -144,14 +88,8 @@ public class OrderList implements Serializable {
 
         for(int i = 0; i < orderList.size(); i++){
             if(orderList.get(i).getInvoiceNumber() == invoiceNum){
-                System.out.println(" ");
-                System.out.println("Removing [" + orderList.get(i).getItemName() + "] from the orderList");
                 orderList.remove(i);
             }
-        }
-
-        if(orderList.size() == initialSize){
-            System.out.println("Could not find an item with the invoice number: " + invoiceNum);
         }
     }
 
@@ -162,8 +100,6 @@ public class OrderList implements Serializable {
                 return orderList.remove(i);
             }
         }
-
-        System.out.println("Could not find an item with the invoice number: " + invoiceNum);
         return null;
     }
 
