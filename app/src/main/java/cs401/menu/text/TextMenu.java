@@ -22,7 +22,6 @@ import java.util.Scanner;
  * NOTE: the menu does not accept spaces for input due to strangeness with scanner's getLine
  * @author Neil Moon
  */
-// TODO: maybe it would be better to implement both Menu and MenuItem for consistency with the other menus
 public class TextMenu implements Menu {
 
     private static final Scanner scanner = new Scanner(System.in);

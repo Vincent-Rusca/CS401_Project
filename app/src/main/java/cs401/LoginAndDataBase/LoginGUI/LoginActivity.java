@@ -44,12 +44,12 @@ public class LoginActivity extends AppCompatActivity {
                 String pass = password.getText().toString();
                 UserAccounts newAccount = new UserAccounts(usr, pass);
                 if (userAccountsSet.contains(newAccount)) {
-                    Toast.makeText();
+                    //Toast.makeText();
                     userPass.loadUserData(usr);
                     Intent mainmenu = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivity(mainmenu);
                 } else {
-                    Toast.makeText();
+                    //Toast.makeText();
                     System.out.println("Wrong password or User account doesn't exist." +
                             " Please register if the user account doesn't exist.");
                 }

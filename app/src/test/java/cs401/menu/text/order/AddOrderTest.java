@@ -39,7 +39,6 @@ public class AddOrderTest {
         Scanner scanner = new Scanner(inputStream);
         addOrder.display(scanner, customerList);
         OrderList list = customerList.getCustomerList().get(1).getOrderList();
-        // TODO: change this to not include the item name if order gets a .equals function
         assertEquals(order.getItemName(), list.getOrderByIndex(0).getItemName());
     }
 
