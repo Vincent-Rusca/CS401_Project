@@ -23,13 +23,14 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
 
     CustomerListRVA adapter;
     RecyclerView recyclerView;
+    CustomerList customerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_menu);
 
-        CustomerList customerList = (CustomerList)getIntent().getExtras().getSerializable("customerList");
+        customerList = CustomerListStateManager.getInstance().getCustomerList();
 
         recyclerView = findViewById(R.id.custList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -53,7 +54,6 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        CustomerList customerList = (CustomerList)getIntent().getExtras().getSerializable("customerList");
         switch(item.getItemId()) {
             case R.id.cust_sort_by_name:
                 customerList.sortByName();

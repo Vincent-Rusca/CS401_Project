@@ -27,23 +27,23 @@ public class MenuActivity extends AppCompatActivity {
     public void goToCustomerActivity(View view) {
         Intent intent = new Intent(this, Customer_Activity.class);
 
-        // this will initialize a CustomerList and pass it to my customer activity
-        // FOR TESTING PURPOSES ONLY *****************************************************
-        CustomerList customerList = new CustomerList();
-        Address customerAddress = new Address("123 Easy St.", "Eureka", "CA", "94599");
-        Customer newCustomer = new Customer("Test Incorporated LLC", "4", customerAddress);
-        customerList.add(newCustomer);
-
-        customerAddress = new Address("69 Everyone Ln.", "Kansas City", "KS", "54321");
-        newCustomer = new Customer("Wincest Properties LLC", "3", customerAddress);
-        customerList.add(newCustomer);
-
-        customerAddress = new Address("45 Ocho St.", "Paris", "TX", "54554");
-        newCustomer = new Customer("Texas Cheese Toast Co.", "2", customerAddress);
-        customerList.add(newCustomer);
-        // END TESTING CODE **************************************************************
-
-        intent.putExtra("customerList", customerList);
+//        // this will initialize a CustomerList and pass it to my customer activity
+//        // FOR TESTING PURPOSES ONLY *****************************************************
+//        CustomerList customerList = new CustomerList();
+//        Address customerAddress = new Address("123 Easy St.", "Eureka", "CA", "94599");
+//        Customer newCustomer = new Customer("Test Incorporated LLC", "4", customerAddress);
+//        customerList.add(newCustomer);
+//
+//        customerAddress = new Address("69 Everyone Ln.", "Kansas City", "KS", "54321");
+//        newCustomer = new Customer("Wincest Properties LLC", "3", customerAddress);
+//        customerList.add(newCustomer);
+//
+//        customerAddress = new Address("45 Ocho St.", "Paris", "TX", "54554");
+//        newCustomer = new Customer("Texas Cheese Toast Co.", "2", customerAddress);
+//        customerList.add(newCustomer);
+//        // END TESTING CODE **************************************************************
+//
+//        intent.putExtra("customerList", customerList);
         startActivity(intent);
     }
 

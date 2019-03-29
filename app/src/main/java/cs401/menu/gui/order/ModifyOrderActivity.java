@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -26,6 +29,8 @@ public class ModifyOrderActivity extends AppCompatActivity implements OrderListR
     int customerIndex;
     int orderIndex;
     Order order;
+    OrderList orderList;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,8 @@ public class ModifyOrderActivity extends AppCompatActivity implements OrderListR
 
         customerIndex = (Integer) getIntent().getSerializableExtra("index");
         customer = CustomerListStateManager.getInstance().getCustomer(customerIndex);
-        OrderList orderList = customer.getOrderList();
-        RecyclerView recyclerView = findViewById(R.id.modifyOrderList);
+        orderList = customer.getOrderList();
+        recyclerView = findViewById(R.id.modifyOrderList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         orderListRecyclerViewAdapter = new OrderListRecyclerViewAdapter(this, orderList);
         orderListRecyclerViewAdapter.setClickListener(this);
@@ -49,63 +54,78 @@ public class ModifyOrderActivity extends AppCompatActivity implements OrderListR
         Toast.makeText(this, "selected " + order.getItemName(), Toast.LENGTH_LONG).show();
     }
 
-    // TODO implement for orderList and copy this elsewhere (medium priority
-    /*@Override
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_order_sort, menu);
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        CustomerList customerList = CustomerListStateManager.getInstance().getCustomerList();
         switch(item.getItemId()) {
-            case R.id.cust_sort_by_name:
-                customerList.sortByName();
-                customerListAdapter = new CustomerListRVA(this, customerList);
-                customerListAdapter.setClickListener(this);
-                recyclerView.setAdapter(customerListAdapter);
+            case R.id.order_sort_by_name:
+                orderList.orderByName();
+                orderListRecyclerViewAdapter = new OrderListRecyclerViewAdapter(this, orderList);
+                orderListRecyclerViewAdapter.setClickListener(this);
+                recyclerView.setAdapter(orderListRecyclerViewAdapter);
                 return true;
 
-            case R.id.cust_sort_by_id:
-                customerList.sortByID();
-                customerListAdapter = new CustomerListRVA(this, customerList);
-                customerListAdapter.setClickListener(this);
-                recyclerView.setAdapter(customerListAdapter);
+            case R.id.order_sort_by_newest:
+                orderList.orderByNewest();
+                orderListRecyclerViewAdapter = new OrderListRecyclerViewAdapter(this, orderList);
+                orderListRecyclerViewAdapter.setClickListener(this);
+                recyclerView.setAdapter(orderListRecyclerViewAdapter);
+                return true;
+
+            case R.id.order_sort_by_oldest:
+                orderList.orderByOldest();
+                orderListRecyclerViewAdapter = new OrderListRecyclerViewAdapter(this, orderList);
+                orderListRecyclerViewAdapter.setClickListener(this);
+                recyclerView.setAdapter(orderListRecyclerViewAdapter);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
     // TODO: sometimes these crash for unknown reasons... (low priority)
+    // might be crashing because the intent is the same name for each
+        // TODO: verify if fixed
     public void modifyName(View view) {
-        Intent intent = new Intent(this, ModifyOrderNameActivity.class);
-        intent.putExtra("customerIndex", customerIndex);
-        intent.putExtra("orderIndex", orderIndex);
-        startActivity(intent);
+        Intent intentModifyName = new Intent(this, ModifyOrderNameActivity.class);
+        intentModifyName.putExtra("customerIndex", customerIndex);
+        intentModifyName.putExtra("orderIndex", orderIndex);
+        startActivity(intentModifyName);
     }
 
     public void modifyCost(View view) {
-        Intent intent = new Intent(this, ModifyOrderCostActivity.class);
-        intent.putExtra("customerIndex", customerIndex);
-        intent.putExtra("orderIndex", orderIndex);
-        startActivity(intent);
+        Intent intentModifyCost = new Intent(this, ModifyOrderCostActivity.class);
+        intentModifyCost.putExtra("customerIndex", customerIndex);
+        intentModifyCost.putExtra("orderIndex", orderIndex);
+        startActivity(intentModifyCost);
     }
 
     public void modifyQuantity(View view) {
-        Intent intent = new Intent(this, ModifyOrderQuantityActivity.class);
-        intent.putExtra("customerIndex", customerIndex);
-        intent.putExtra("orderIndex", orderIndex);
-        startActivity(intent);
+        Intent intentModifyQuantity = new Intent(this, ModifyOrderQuantityActivity.class);
+        intentModifyQuantity.putExtra("customerIndex", customerIndex);
+        intentModifyQuantity.putExtra("orderIndex", orderIndex);
+        startActivity(intentModifyQuantity);
     }
 
     public void modifyInvoice(View view) {
-        Intent intent = new Intent(this, ModifyOrderInvoiceActivity.class);
-        intent.putExtra("customerIndex", customerIndex);
-        intent.putExtra("orderIndex", orderIndex);
-        startActivity(intent);
+        Intent intentModifyInvoice = new Intent(this, ModifyOrderInvoiceActivity.class);
+        intentModifyInvoice.putExtra("customerIndex", customerIndex);
+        intentModifyInvoice.putExtra("orderIndex", orderIndex);
+        startActivity(intentModifyInvoice);
     }
 
     public void modifyDescription(View view) {
-        Intent intent = new Intent(this, ModifyOrderDescriptionActivity.class);
-        intent.putExtra("customerIndex", customerIndex);
-        intent.putExtra("orderIndex", orderIndex);
-        startActivity(intent);
+        Intent intentModifyInvoice = new Intent(this, ModifyOrderDescriptionActivity.class);
+        intentModifyInvoice.putExtra("customerIndex", customerIndex);
+        intentModifyInvoice.putExtra("orderIndex", orderIndex);
+        startActivity(intentModifyInvoice);
     }
 }
