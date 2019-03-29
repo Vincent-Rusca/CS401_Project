@@ -11,15 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainDriver.MainActivity">
+        <activity android:name=".LoginAndDataBase.LoginGUI.RegisterActivity"
+                  android:label="Registration"    />
+        <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity"
+                  android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".LoginAndDataBase.LoginGUI.RegisterActivity" />
-        <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity">
-
         </activity>
         <activity android:name=".menu.gui.Customer_Activity" />
         <activity
