@@ -36,6 +36,7 @@ public class DeleteCustomerActivity extends AppCompatActivity implements Custome
     @Override
     public void onItemClick(View view, int position) {
         CustomerListStateManager.getInstance().removeCustomer(position);
+        finish();
     }
 
     @Override
