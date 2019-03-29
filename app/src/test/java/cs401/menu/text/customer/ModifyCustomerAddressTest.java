@@ -32,7 +32,6 @@ public class ModifyCustomerAddressTest {
         ModifyCustomerAddress modifyAddress = new ModifyCustomerAddress(customer);
         Address newAddress = new Address("street1", "city2", "state3", "zip4");
         modifyAddress.display(scanner, customerList);
-        // TODO: remove the toString calls if Address gets a properly implemented equals() override
         assertEquals(customer.getAddress().toString(), newAddress.toString());
     }
 

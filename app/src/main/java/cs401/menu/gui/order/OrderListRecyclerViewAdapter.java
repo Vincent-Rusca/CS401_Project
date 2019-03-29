@@ -10,7 +10,6 @@ import android.widget.TextView;
 import cs401.Orders.Order;
 import cs401.Orders.OrderList;
 import cs401.R;
-import cs401.menu.gui.CustomerListRVA;
 
 public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderListRecyclerViewAdapter.ViewHolder> {
     private OrderList mData;

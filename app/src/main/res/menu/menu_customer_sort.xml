@@ -11,5 +11,4 @@
         android:id="@+id/cust_sort_by_id"
         android:title="Sort by ID"
         app:showAsAction="never"/>
-
 </menu>
