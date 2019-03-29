@@ -23,7 +23,7 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
 
     @Override
     public OrderListRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.customerlist_row, parent, false);
+        View view = mInflater.inflate(R.layout.orderlist_row, parent, false);
         return new OrderListRecyclerViewAdapter.ViewHolder(view);
     }
 
@@ -43,7 +43,7 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.custListNames);
+            myTextView = itemView.findViewById(R.id.orderListNames);
             itemView.setOnClickListener(this);
         }
 

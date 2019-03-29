@@ -42,7 +42,11 @@ public class CustomerActivity extends AppCompatActivity implements CustomerListR
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+
+        Intent openOrders = new Intent(this, Order_Activity.class);
+        openOrders.putExtra("orderList", adapter.getItem(position).getOrderList());
+        startActivity(openOrders);
     }
 
     @Override
