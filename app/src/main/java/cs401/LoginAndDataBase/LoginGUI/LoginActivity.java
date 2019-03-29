@@ -28,28 +28,27 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         /*Login Button*/
         login = (Button) findViewById(R.id.loginbtn);
-        validLogin();
-    }
+        /*Registration Button*/
+        register = (Button) findViewById(R.id.registerbtn);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*This checks if the login button was pressed.
+                * If it was then it will take the users name and password.
+                * Then it will check to see if the users password is correct.
+                * If it is then it will take them to the menu, if not is will give an error message*/
+                if (v.getId() == R.id.loginbtn) {
+                    String user = username.getText().toString();
+                    String pass = password.getText().toString();
+                    String passCheck = databaseHelper.searchPass(user);
+                    if (pass.equals(passCheck)) {
+                        Intent menu = new Intent(LoginActivity.this, MenuActivity.class);
+                        startActivity(menu);
+                    } else {
+                        Toast nopass = Toast.makeText(LoginActivity.this, "Username or Password don't match!", Toast.LENGTH_SHORT);
+                        nopass.show();
+                    }
 
-    private void validLogin() {
-            DataBase userPass = new DataBase();
-            try {
-                Menu menu = new TextMenu();
-                UserAccounts user = new UserAccounts();
-                userPass.loadUserAccounts();
-                Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
-                String usr = username.getText().toString();
-                String pass = password.getText().toString();
-                UserAccounts newAccount = new UserAccounts(usr, pass);
-                if (userAccountsSet.contains(newAccount)) {
-                    Toast.makeText();
-                    userPass.loadUserData(usr);
-                    Intent mainmenu = new Intent(LoginActivity.this, MenuActivity.class);
-                    startActivity(mainmenu);
-                } else {
-                    Toast.makeText();
-                    System.out.println("Wrong password or User account doesn't exist." +
-                            " Please register if the user account doesn't exist.");
                 }
             }
         });

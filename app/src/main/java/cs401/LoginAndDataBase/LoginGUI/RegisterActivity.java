@@ -50,52 +50,19 @@ public class RegisterActivity extends AppCompatActivity {
                     if (!pass.equals(pass2)) {
                         Toast nopass = Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT);
                         nopass.show();
-                    }
-                    else {
+                    } else {
                         // Add user to database
                         User u = new User();
                         u.setUsername(user);
                         u.setPassword(pass);
                         databaseHelper.addUser(u);
-                        Intent returnToLogin = new Intent(RegisterActivity.this,LoginActivity.class);
+                        Intent returnToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(returnToLogin);
                     }
 
                 }
-                /*String user = username.getText().toString();
-                String pass = password.getText().toString();
-                User u = new User();
-                u.setUsername(user);
-                u.setPassword(pass);*//*
-                //databaseHelper.addLogin(new User(user,pass));
-                Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
-                Intent returnlogin = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(returnlogin);*/
-
             }
         });
-
     }
 
 }
-
-
-/*
-        username = (EditText) findViewById(R.id.regusername);
-        password = (EditText) findViewById(R.id.regpassword);
-        signup = (Button) findViewById(R.id.signupbtn);
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                *//*String user = username.getText().toString();
-                String pass = password.getText().toString();
-                User u = new User();
-                u.setUsername(user);
-                u.setPassword(pass);*//*
-                //databaseHelper.addLogin(new User(user,pass));
-                Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
-                Intent returnlogin = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(returnlogin);
-
-            }
-        });*/

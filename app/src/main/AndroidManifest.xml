@@ -63,21 +63,25 @@
             android:label="@string/title_activity_add_customer"
             android:parentActivityName=".menu.gui.MenuActivity" />
         <activity android:name=".menu.gui.Customer_Activity" />
-        <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity">
+        <activity android:name=".LoginAndDataBase.LoginGUI.RegisterActivity"
+                  android:label="Registration"/>
+        <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity"
+                  android:label="Login">
             <!--uncomment to make the login activity the main one-->
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity
             android:name=".menu.gui.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
+            <!--uncomment to make the menu activity the main one-->
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
     </application>
 
