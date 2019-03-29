@@ -3,58 +3,62 @@ package cs401.LoginAndDataBase.LoginGUI;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.util.Set;
-
-import cs401.LoginAndDataBase.DataBase;
-import cs401.LoginAndDataBase.Login;
-import cs401.LoginAndDataBase.UserAccounts;
+import cs401.LoginAndDataBase.Database.DatabaseHelper;
 import cs401.R;
-import cs401.menu.Menu;
 import cs401.menu.gui.MenuActivity;
-import cs401.menu.text.TextMenu;
+
 
 public class LoginActivity extends AppCompatActivity {
-    private Button login;
+
+    DatabaseHelper databaseHelper = new DatabaseHelper(this);
+    private Button login, register;
     private EditText username, password;
-    Login test = new Login();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        /*Username and Password Text boxes*/
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
+        /*Login Button*/
         login = (Button) findViewById(R.id.loginbtn);
-        validLogin();
-    }
+        /*Registration Button*/
+        register = (Button) findViewById(R.id.registerbtn);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*This checks if the login button was pressed.
+                * If it was then it will take the users name and password.
+                * Then it will check to see if the users password is correct.
+                * If it is then it will take them to the menu, if not is will give an error message*/
+                if (v.getId() == R.id.loginbtn) {
+                    String user = username.getText().toString();
+                    String pass = password.getText().toString();
+                    String passCheck = databaseHelper.searchPass(user);
+                    if (pass.equals(passCheck)) {
+                        Intent menu = new Intent(LoginActivity.this, MenuActivity.class);
+                        startActivity(menu);
+                    } else {
+                        Toast nopass = Toast.makeText(LoginActivity.this, "Username or Password don't match!", Toast.LENGTH_SHORT);
+                        nopass.show();
+                    }
 
-    private void validLogin() {
-            DataBase userPass = new DataBase();
-            try {
-                Menu menu = new TextMenu();
-                UserAccounts user = new UserAccounts();
-                userPass.loadUserAccounts();
-                Set<UserAccounts> userAccountsSet = userPass.getUserAccounts();
-                String usr = username.getText().toString();
-                String pass = password.getText().toString();
-                UserAccounts newAccount = new UserAccounts(usr, pass);
-                if (userAccountsSet.contains(newAccount)) {
-                    //Toast.makeText();
-                    userPass.loadUserData(usr);
-                    Intent mainmenu = new Intent(LoginActivity.this, MenuActivity.class);
-                    startActivity(mainmenu);
-                } else {
-                    //Toast.makeText();
-                    System.out.println("Wrong password or User account doesn't exist." +
-                            " Please register if the user account doesn't exist.");
                 }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             }
-        }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reg = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(reg);
+            }
+        });
+
+    }
 }
