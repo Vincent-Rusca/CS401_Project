@@ -1,5 +1,6 @@
 package cs401.menu.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,10 @@ import android.widget.Toast;
 
 import cs401.Customers.CustomerList;
 import cs401.R;
+import cs401.menu.gui.customer.AddCustomerActivity;
+import cs401.menu.gui.customer.DeleteCustomerActivity;
+import cs401.menu.gui.customer.DisplayCustomerActivity;
+import cs401.menu.gui.customer.ModifyCustomerActivity;
 
 
 public class Customer_Activity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
@@ -41,7 +46,7 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.customer_settings, menu);
+        inflater.inflate(R.menu.menu_customer_settings, menu);
 
         return true;
     }
@@ -64,6 +69,29 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
                 recyclerView.setAdapter(adapter);
                 return true;
 
+            case R.id.activity_add_customer:
+                Intent intentAddCustomer = new Intent(this, AddCustomerActivity.class);
+                //intentAddCustomer.putExtra("customerList", customerList);
+                startActivity(intentAddCustomer);
+                return true;
+
+            case R.id.activity_delete_customer:
+                Intent intentDeleteCustomer = new Intent(this, DeleteCustomerActivity.class);
+                //intentDeleteCustomer.putExtra("customerList", customerList);
+                startActivity(intentDeleteCustomer);
+                return true;
+
+            case R.id.activity_display_customer:
+                Intent intentDisplayCustomer = new Intent(this, DisplayCustomerActivity.class);
+                //intentDisplayCustomer.putExtra("customerList", customerList);
+                startActivity(intentDisplayCustomer);
+                return true;
+
+            case R.id.activity_modify_customer:
+                Intent intentModifyCustomer = new Intent(this, ModifyCustomerActivity.class);
+                //intentModifyCustomer.putExtra("customerList", customerList);
+                startActivity(intentModifyCustomer);
+                return true;
 
                 default:
                     return super.onOptionsItemSelected(item);

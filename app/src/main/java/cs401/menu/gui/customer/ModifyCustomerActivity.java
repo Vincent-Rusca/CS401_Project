@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -26,13 +28,14 @@ public class ModifyCustomerActivity extends AppCompatActivity implements Custome
     int index;
     CustomerListRVA customerListAdapter;
     RecyclerView recyclerView;
+    CustomerList customerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_customer);
 
-        CustomerList customerList = CustomerListStateManager.getInstance().getCustomerList();
+        customerList = CustomerListStateManager.getInstance().getCustomerList();
         recyclerView = findViewById(R.id.modifyCustList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         customerListAdapter = new CustomerListRVA(this, customerList);
@@ -49,9 +52,16 @@ public class ModifyCustomerActivity extends AppCompatActivity implements Custome
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_customer_sort, menu);
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        CustomerList customerList = CustomerListStateManager.getInstance().getCustomerList();
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.cust_sort_by_name:
                 customerList.sortByName();
                 customerListAdapter = new CustomerListRVA(this, customerList);

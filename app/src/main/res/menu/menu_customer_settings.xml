@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/cust_sort_by_name"
+        android:title="Sort by name"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/cust_sort_by_id"
+        android:title="Sort by ID"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/activity_add_customer"
+        android:title="Add a customer"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/activity_delete_customer"
+        android:title="Delete a customer"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/activity_display_customer"
+        android:title="Display customer info"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/activity_modify_customer"
+        android:title="Modify a customer"
+        app:showAsAction="never"/>
+
+
+</menu>
