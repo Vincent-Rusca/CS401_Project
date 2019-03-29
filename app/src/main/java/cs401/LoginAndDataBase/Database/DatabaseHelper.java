@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+/*The purpose of this class is to help manipulate the database.
+* This will have all of the functions to create, check or add to the database*/
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    public static final String DATABASE_TEST = "testCase";
     private static final String DATABASE_NAME = "testLogin";
     private static final String TABLE_NAME = "testLog";
     private static final int DATABASE_VERSION = 1;
@@ -48,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
     }
-    /*Used to check and see if the users password is correct*/
+    /*Used to check and see if the user's password is correct*/
     public String searchPass(String user){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT Username, Password FROM "+TABLE_NAME;
@@ -69,5 +71,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
         return pword;
+    }
+
+    /*This is used for making sure there are no duplicate usernames in the database.*/
+    public String searchUser(String user){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT Username, Password FROM "+TABLE_NAME;
+        Cursor cursor = db.rawQuery(query , null);
+        String uname;
+        uname = "not found";
+        /*This will start out in the first colum to check the username, if it exists it will break
+         * and check it with what the user has entered where its called*/
+        if(cursor.moveToFirst())
+        {
+            do {
+                uname = cursor.getString(0);
+                if(uname.equals(user)) {
+                    uname = cursor.getString(0);
+                    break;
+                }
+            }while (cursor.moveToNext());
+        }
+        return uname;
     }
 }
