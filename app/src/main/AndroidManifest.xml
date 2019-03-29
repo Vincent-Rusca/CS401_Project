@@ -83,6 +83,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
+        <activity
+            android:name=".menu.gui.Order_Activity"
+            android:label="Order List"
+            android:parentActivityName=".menu.gui.Customer_Activity"/>
     </application>
 
 </manifest>
