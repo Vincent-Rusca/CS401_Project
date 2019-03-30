@@ -76,18 +76,18 @@ public class LoginActivity extends AppCompatActivity {
     private void generateSampleInput() {
         if (CustomerListStateManager.getInstance().isEmpty()) {
             Address customerAddress = new Address("123 Easy St.", "Eureka", "CA", "94599");
-            Customer newCustomer = new Customer("Test Incorporated LLC", "1", customerAddress);
-            newCustomer.addToOrderList(new Order("taco", 1100, 20, 98723, "a taco"));
-            newCustomer.addToOrderList(new Order("taco2", 140, 23, 923423, "a taco2"));
+            Customer newCustomer = new Customer("Test Incorporated LLC", "2", customerAddress);
+            newCustomer.addToOrderList(new Order("Zebra", 1100, 20, 98723, "a taco"));
+            newCustomer.addToOrderList(new Order("Apple", 140, 23, 923423, "a taco2"));
             CustomerListStateManager.getInstance().addCustomer(newCustomer);
 
             customerAddress = new Address("45 Ocho St.", "Paris", "TX", "54554");
-            newCustomer = new Customer("Texas Cheese Toast Co.", "2", customerAddress);
+            newCustomer = new Customer("Texas Cheese Toast Co.", "1", customerAddress);
             newCustomer.addToOrderList(new Order("burrito", 13540, 2233, 923, "a burrito"));
             CustomerListStateManager.getInstance().addCustomer(newCustomer);
 
             customerAddress = new Address("69 Everyone Ln.", "Kansas City", "KS", "54321");
-            newCustomer = new Customer("Wincest Properties LLC", "3", customerAddress);
+            newCustomer = new Customer("Grundle Properties LLC", "3", customerAddress);
             CustomerListStateManager.getInstance().addCustomer(newCustomer);
         }
     }
