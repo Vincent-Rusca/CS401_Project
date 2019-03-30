@@ -11,14 +11,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import cs401.Customers.Customer;
 import cs401.Orders.OrderList;
 import cs401.R;
 
+import cs401.menu.gui.order.AddOrderActivity;
+import cs401.menu.gui.order.DeleteOrderActivity;
+import cs401.menu.gui.order.ModifyOrderActivity;
 import cs401.menu.gui.order.OrderListRecyclerViewAdapter;
 
 public class Order_Activity extends AppCompatActivity implements OrderListRecyclerViewAdapter.ItemClickListener {
     OrderListRecyclerViewAdapter adapter;
     RecyclerView recyclerView;
+    Customer customer;
     OrderList orderList;
 
     @Override
@@ -26,7 +31,8 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_menu);
 
-        orderList = (OrderList)getIntent().getExtras().getSerializable("orderList");
+        customer = (Customer)getIntent().getExtras().getSerializable("customer");
+        orderList = customer.getOrderList();
 
         recyclerView = findViewById(R.id.orderList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -44,7 +50,7 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_order_sort, menu);
+        inflater.inflate(R.menu.menu_order_settings, menu);
 
         return true;
     }
@@ -73,29 +79,24 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
                 recyclerView.setAdapter(adapter);
                 return true;
 
-//            case R.id.activity_add_customer:
-//                Intent intentAddCustomer = new Intent(this, AddCustomerActivity.class);
-//                //intentAddCustomer.putExtra("customerList", customerList);
-//                startActivity(intentAddCustomer);
-//                return true;
-//
-//            case R.id.activity_delete_customer:
-//                Intent intentDeleteCustomer = new Intent(this, DeleteCustomerActivity.class);
-//                //intentDeleteCustomer.putExtra("customerList", customerList);
-//                startActivity(intentDeleteCustomer);
-//                return true;
-//
-//            case R.id.activity_display_customer:
-//                Intent intentDisplayCustomer = new Intent(this, DisplayCustomerActivity.class);
-//                //intentDisplayCustomer.putExtra("customerList", customerList);
-//                startActivity(intentDisplayCustomer);
-//                return true;
-//
-//            case R.id.activity_modify_customer:
-//                Intent intentModifyCustomer = new Intent(this, ModifyCustomerActivity.class);
-//                //intentModifyCustomer.putExtra("customerList", customerList);
-//                startActivity(intentModifyCustomer);
-//                return true;
+            case R.id.activity_add_order:
+                Intent intentAddOrder = new Intent(this, AddOrderActivity.class);
+                intentAddOrder.putExtra("index", customer);
+                startActivity(intentAddOrder);
+                return true;
+
+            case R.id.activity_delete_order:
+            Intent intentDeleteOrder = new Intent(this, DeleteOrderActivity.class);
+                intentDeleteOrder.putExtra("index", customer);
+            startActivity(intentDeleteOrder);
+            return true;
+
+            case R.id.activity_modify_order:
+                Intent intentModifyOrder = new Intent(this, ModifyOrderActivity.class);
+                intentModifyOrder.putExtra("index", customer);
+                startActivity(intentModifyOrder);
+                return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);
