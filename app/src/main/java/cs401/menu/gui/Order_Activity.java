@@ -81,19 +81,19 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
 
             case R.id.activity_add_order:
                 Intent intentAddOrder = new Intent(this, AddOrderActivity.class);
-                intentAddOrder.putExtra("index", customer);
+                //intentAddOrder.putExtra("index", customer);
                 startActivity(intentAddOrder);
                 return true;
 
             case R.id.activity_delete_order:
-            Intent intentDeleteOrder = new Intent(this, DeleteOrderActivity.class);
-                intentDeleteOrder.putExtra("index", customer);
-            startActivity(intentDeleteOrder);
+                Intent intentDeleteOrder = new Intent(this, DeleteOrderActivity.class);
+                //intentDeleteOrder.putExtra("index", customer);
+                startActivity(intentDeleteOrder);
             return true;
 
             case R.id.activity_modify_order:
                 Intent intentModifyOrder = new Intent(this, ModifyOrderActivity.class);
-                intentModifyOrder.putExtra("index", customer);
+                //intentModifyOrder.putExtra("index", customer);
                 startActivity(intentModifyOrder);
                 return true;
 
