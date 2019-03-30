@@ -77,13 +77,13 @@ public class LoginActivity extends AppCompatActivity {
         if (CustomerListStateManager.getInstance().isEmpty()) {
             Address customerAddress = new Address("123 Easy St.", "Eureka", "CA", "94599");
             Customer newCustomer = new Customer("Test Incorporated LLC", "2", customerAddress);
-            newCustomer.addToOrderList(new Order("Zebra", 1100, 20, 98723, "a taco"));
-            newCustomer.addToOrderList(new Order("Apple", 140, 23, 923423, "a taco2"));
+            newCustomer.addToOrderList(new Order("Zebra", 1100, 20, 98723, "a taco", 2002, 4,1));
+            newCustomer.addToOrderList(new Order("Apple", 140, 23, 923423, "a taco2", 2004, 1, 1));
             CustomerListStateManager.getInstance().addCustomer(newCustomer);
 
             customerAddress = new Address("45 Ocho St.", "Paris", "TX", "54554");
             newCustomer = new Customer("Texas Cheese Toast Co.", "1", customerAddress);
-            newCustomer.addToOrderList(new Order("burrito", 13540, 2233, 923, "a burrito"));
+            newCustomer.addToOrderList(new Order("burrito", 13540, 2233, 923, "a burrito", 1986, 2, 2));
             CustomerListStateManager.getInstance().addCustomer(newCustomer);
 
             customerAddress = new Address("69 Everyone Ln.", "Kansas City", "KS", "54321");
