@@ -25,13 +25,15 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
     RecyclerView recyclerView;
     Customer customer;
     OrderList orderList;
+    int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_menu);
-
-        customer = (Customer)getIntent().getExtras().getSerializable("customer");
+        index = (Integer) getIntent().getSerializableExtra("index");
+//        customer = (Customer)getIntent().getExtras().getSerializable("index");
+        customer = CustomerListStateManager.getInstance().getCustomer(index);
         orderList = customer.getOrderList();
 
         recyclerView = findViewById(R.id.orderList);
@@ -81,19 +83,19 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
 
             case R.id.activity_add_order:
                 Intent intentAddOrder = new Intent(this, AddOrderActivity.class);
-                //intentAddOrder.putExtra("index", customer);
+                intentAddOrder.putExtra("index", index);
                 startActivity(intentAddOrder);
                 return true;
 
             case R.id.activity_delete_order:
                 Intent intentDeleteOrder = new Intent(this, DeleteOrderActivity.class);
-                //intentDeleteOrder.putExtra("index", customer);
+                intentDeleteOrder.putExtra("index", index);
                 startActivity(intentDeleteOrder);
             return true;
 
             case R.id.activity_modify_order:
                 Intent intentModifyOrder = new Intent(this, ModifyOrderActivity.class);
-                //intentModifyOrder.putExtra("index", customer);
+                intentModifyOrder.putExtra("index", index);
                 startActivity(intentModifyOrder);
                 return true;
 

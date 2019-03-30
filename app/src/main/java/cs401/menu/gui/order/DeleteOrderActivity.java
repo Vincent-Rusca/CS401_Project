@@ -42,6 +42,7 @@ public class DeleteOrderActivity extends AppCompatActivity implements OrderListR
     @Override
     public void onItemClick(View view, int position) {
         CustomerListStateManager.getInstance().getCustomer(customerIndex).removeFromOrderList(position);
+        finish();
     }
 
     @Override

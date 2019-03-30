@@ -18,12 +18,15 @@ import cs401.menu.gui.Modifier;
 public class AddOrderActivity extends AppCompatActivity implements Modifier {
 
     int index;
+    Customer customer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         index = (Integer) getIntent().getSerializableExtra("index");
         setContentView(R.layout.activity_add_order);
+
+//        customer = (Customer)getIntent().getSerializableExtra("customer");
     }
 
     @Override
@@ -35,5 +38,6 @@ public class AddOrderActivity extends AppCompatActivity implements Modifier {
         String description = ((EditText) findViewById(R.id.add_order_description)).getText().toString();
         Order newOrder = new Order(name, cost, quantity, invoice, description);
         CustomerListStateManager.getInstance().getCustomer(index).addToOrderList(newOrder);
+        finish();
     }
 }

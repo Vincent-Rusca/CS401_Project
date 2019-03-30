@@ -45,7 +45,7 @@ public class CustomerActivity extends AppCompatActivity implements CustomerListR
         //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, Order_Activity.class);
-        intent.putExtra("customer", adapter.getItem(position));
+        intent.putExtra("index", position);
         startActivity(intent);
     }
 
