@@ -64,6 +64,7 @@
             android:parentActivityName=".menu.gui.CustomerActivity" />
         <activity
             android:name=".menu.gui.CustomerActivity"
+            android:label="Customer List"
             android:parentActivityName=".LoginAndDataBase.LoginGUI.LoginActivity"/>
         <activity
             android:name=".LoginAndDataBase.LoginGUI.RegisterActivity"
