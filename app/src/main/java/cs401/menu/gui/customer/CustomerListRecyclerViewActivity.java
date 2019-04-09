@@ -32,8 +32,9 @@ public class CustomerListRecyclerViewActivity extends RecyclerView.Adapter<Custo
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData.getCustomerList().get(position).getCustomerName();
-        holder.myTextView.setText(animal);
+        holder.customerNameView.setText(mData.getCustomerList().get(position).getCustomerName());
+        holder.customerIDView.setText("ID: " + mData.getCustomerList().get(position).getCustomerID());
+        holder.customerAddressView.setText(mData.getCustomerList().get(position).getAddress().toString());
     }
 
     // total number of rows
@@ -45,11 +46,14 @@ public class CustomerListRecyclerViewActivity extends RecyclerView.Adapter<Custo
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        TextView customerNameView, customerIDView, customerAddressView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.custListNames);
+            customerNameView = itemView.findViewById(R.id.custListNames);
+            customerIDView = itemView.findViewById(R.id.custListID);
+            customerAddressView = itemView.findViewById(R.id.custListAddress);
+
             itemView.setOnClickListener(this);
         }
 
