@@ -9,8 +9,12 @@ import cs401.Customers.Customer;
 import cs401.Orders.Order;
 import cs401.R;
 import cs401.menu.gui.CustomerListStateManager;
+import cs401.menu.gui.Modifier;
 
-public class ModifyOrderDescriptionActivity extends AppCompatActivity {
+/**
+ * modify an order's description
+ */
+public class ModifyOrderDescriptionActivity extends AppCompatActivity implements Modifier {
 
     int customerIndex;
     int orderIndex;
@@ -27,10 +31,12 @@ public class ModifyOrderDescriptionActivity extends AppCompatActivity {
         order = CustomerListStateManager.getInstance().getCustomer(customerIndex).getOrderList().getOrderByIndex(orderIndex);
     }
 
+    @Override
     public void save(View view) {
         CustomerListStateManager customerListStateManager = CustomerListStateManager.getInstance();
         customerListStateManager.removeCustomer(customerIndex);
         String description = ((EditText) findViewById(R.id.modify_order_description)).getText().toString();
+        customer.removeFromOrderList(orderIndex);
         order.setDescription(description);
         customer.addToOrderList(order);
         customerListStateManager.addCustomer(customer);

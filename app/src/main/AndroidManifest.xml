@@ -13,19 +13,19 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".menu.gui.order.modify.ModifyOrderDescriptionActivity"
-            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"/>
         <activity
             android:name=".menu.gui.order.modify.ModifyOrderInvoiceActivity"
-            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"/>
         <activity
             android:name=".menu.gui.order.modify.ModifyOrderQuantityActivity"
-            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"/>
         <activity
             android:name=".menu.gui.order.modify.ModifyOrderCostActivity"
-            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"/>
         <activity
             android:name=".menu.gui.order.modify.ModifyOrderNameActivity"
-            android:parentActivityName=".menu.gui.order.ModifyOrderActivity"/>
+            android:parentActivityName=".menu.gui.customer.ModifyCustomerActivity"/>
         <activity
             android:name=".menu.gui.order.DeleteOrderActivity"
             android:label="@string/title_activity_delete_order"
@@ -49,22 +49,27 @@
         <activity
             android:name=".menu.gui.customer.ModifyCustomerActivity"
             android:label="@string/title_activity_modify_customer"
-            android:parentActivityName=".menu.gui.MenuActivity" />
+            android:parentActivityName=".menu.gui.CustomerActivity" />
         <activity
             android:name=".menu.gui.customer.DisplayCustomerActivity"
             android:label="@string/title_activity_display_customer"
-            android:parentActivityName=".menu.gui.MenuActivity" />
+            android:parentActivityName=".menu.gui.CustomerActivity" />
         <activity
             android:name=".menu.gui.customer.DeleteCustomerActivity"
             android:label="@string/title_activity_delete_customer"
-            android:parentActivityName=".menu.gui.MenuActivity" />
+            android:parentActivityName=".menu.gui.CustomerActivity" />
         <activity
             android:name=".menu.gui.customer.AddCustomerActivity"
             android:label="@string/title_activity_add_customer"
-            android:parentActivityName=".menu.gui.MenuActivity" />
-        <activity android:name=".menu.gui.Customer_Activity" />
-        <activity android:name=".LoginAndDataBase.LoginGUI.RegisterActivity"
-                  android:label="Registration"/>
+            android:parentActivityName=".menu.gui.CustomerActivity" />
+        <activity
+            android:name=".menu.gui.CustomerActivity"
+            android:label="Customer List"
+            android:parentActivityName=".LoginAndDataBase.LoginGUI.LoginActivity"/>
+        <activity
+            android:name=".LoginAndDataBase.LoginGUI.RegisterActivity"
+            android:label="Registration"
+            android:parentActivityName=".LoginAndDataBase.LoginGUI.LoginActivity"/>
         <activity android:name=".LoginAndDataBase.LoginGUI.LoginActivity"
                   android:label="Login">
             <!--uncomment to make the login activity the main one-->
@@ -74,19 +79,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".menu.gui.MenuActivity"
-            android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar">
-            <!--uncomment to make the menu activity the main one-->
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-        <activity
             android:name=".menu.gui.Order_Activity"
             android:label="Order List"
-            android:parentActivityName=".menu.gui.Customer_Activity"/>
+            android:parentActivityName=".menu.gui.CustomerActivity"/>
     </application>
 
 </manifest>

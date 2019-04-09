@@ -14,7 +14,6 @@ import android.widget.Toast;
 import cs401.Customers.Customer;
 import cs401.Customers.CustomerList;
 import cs401.R;
-import cs401.menu.gui.CustomerListRVA;
 import cs401.menu.gui.CustomerListStateManager;
 import cs401.menu.gui.customer.modify.ModifyCustomerAddressActivity;
 import cs401.menu.gui.customer.modify.ModifyCustomerNameActivity;
@@ -22,11 +21,14 @@ import cs401.menu.gui.order.AddOrderActivity;
 import cs401.menu.gui.order.DeleteOrderActivity;
 import cs401.menu.gui.order.ModifyOrderActivity;
 
-public class ModifyCustomerActivity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
+/**
+ * modify a customer
+ */
+public class ModifyCustomerActivity extends AppCompatActivity implements CustomerListRecyclerViewActivity.ItemClickListener {
 
     Customer customer;
     int index;
-    CustomerListRVA customerListAdapter;
+    CustomerListRecyclerViewActivity customerListAdapter;
     RecyclerView recyclerView;
     CustomerList customerList;
 
@@ -38,7 +40,7 @@ public class ModifyCustomerActivity extends AppCompatActivity implements Custome
         customerList = CustomerListStateManager.getInstance().getCustomerList();
         recyclerView = findViewById(R.id.modifyCustList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        customerListAdapter = new CustomerListRVA(this, customerList);
+        customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
         customerListAdapter.setClickListener(this);
         recyclerView.setAdapter(customerListAdapter);
     }
@@ -64,14 +66,14 @@ public class ModifyCustomerActivity extends AppCompatActivity implements Custome
         switch (item.getItemId()) {
             case R.id.cust_sort_by_name:
                 customerList.sortByName();
-                customerListAdapter = new CustomerListRVA(this, customerList);
+                customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
                 customerListAdapter.setClickListener(this);
                 recyclerView.setAdapter(customerListAdapter);
                 return true;
 
             case R.id.cust_sort_by_id:
                 customerList.sortByID();
-                customerListAdapter = new CustomerListRVA(this, customerList);
+                customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
                 customerListAdapter.setClickListener(this);
                 recyclerView.setAdapter(customerListAdapter);
                 return true;
@@ -81,6 +83,7 @@ public class ModifyCustomerActivity extends AppCompatActivity implements Custome
         }
     }
 
+    // go to the other modify activities
     public void modifyName(View view) {
         Intent intent = new Intent(this, ModifyCustomerNameActivity.class);
         intent.putExtra("customer", index);

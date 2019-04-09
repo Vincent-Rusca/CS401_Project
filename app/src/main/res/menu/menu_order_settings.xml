@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/order_sort_by_name"
+        android:title="Sort by name"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/order_sort_by_newest"
+        android:title="Sort by newest"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/order_sort_by_oldest"
+        android:title="Sort by oldest"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/activity_add_order"
+        android:title="Add an order"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/activity_delete_order"
+        android:title="Delete an order"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/activity_modify_order"
+        android:title="Modify an order"
+        app:showAsAction="never"/>
+</menu>

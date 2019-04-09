@@ -1,6 +1,7 @@
 package cs401.LoginAndDataBase.Database;
 
-/*This class is used to set and get the users information*/
+/*This class is used to set and get the users information.
+* This will be used to retrieve their data so it can be saved to the database.*/
 public class User {
     int id_;
     String username_;

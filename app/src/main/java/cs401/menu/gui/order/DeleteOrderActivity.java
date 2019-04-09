@@ -14,8 +14,9 @@ import cs401.Orders.OrderList;
 import cs401.R;
 import cs401.menu.gui.CustomerListStateManager;
 
-// TODO: class is incomplete, needs a save button in the layout and functionality for that button
-// TODO see modify order class for inspiration (high priority)
+/**
+ * delete an order from a customer
+ */
 public class DeleteOrderActivity extends AppCompatActivity implements OrderListRecyclerViewAdapter.ItemClickListener {
 
     int customerIndex;
@@ -41,6 +42,7 @@ public class DeleteOrderActivity extends AppCompatActivity implements OrderListR
     @Override
     public void onItemClick(View view, int position) {
         CustomerListStateManager.getInstance().getCustomer(customerIndex).removeFromOrderList(position);
+        finish();
     }
 
     @Override

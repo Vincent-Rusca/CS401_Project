@@ -14,14 +14,15 @@ import android.widget.Toast;
 import cs401.Customers.CustomerList;
 import cs401.R;
 import cs401.menu.gui.customer.AddCustomerActivity;
+import cs401.menu.gui.customer.CustomerListRecyclerViewActivity;
 import cs401.menu.gui.customer.DeleteCustomerActivity;
 import cs401.menu.gui.customer.DisplayCustomerActivity;
 import cs401.menu.gui.customer.ModifyCustomerActivity;
 
 
-public class Customer_Activity extends AppCompatActivity implements CustomerListRVA.ItemClickListener {
+public class CustomerActivity extends AppCompatActivity implements CustomerListRecyclerViewActivity.ItemClickListener {
 
-    CustomerListRVA adapter;
+    CustomerListRecyclerViewActivity adapter;
     RecyclerView recyclerView;
     CustomerList customerList;
 
@@ -34,7 +35,7 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
 
         recyclerView = findViewById(R.id.custList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CustomerListRVA(this, customerList);
+        adapter = new CustomerListRecyclerViewActivity(this, customerList);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
@@ -43,9 +44,9 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
     public void onItemClick(View view, int position) {
         //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
 
-        Intent openOrders = new Intent(this, Order_Activity.class);
-        openOrders.putExtra("orderList", adapter.getItem(position).getOrderList());
-        startActivity(openOrders);
+        Intent intent = new Intent(this, Order_Activity.class);
+        intent.putExtra("index", position);
+        startActivity(intent);
     }
 
     @Override
@@ -61,14 +62,14 @@ public class Customer_Activity extends AppCompatActivity implements CustomerList
         switch(item.getItemId()) {
             case R.id.cust_sort_by_name:
                 customerList.sortByName();
-                adapter = new CustomerListRVA(this, customerList);
+                adapter = new CustomerListRecyclerViewActivity(this, customerList);
                 adapter.setClickListener(this);
                 recyclerView.setAdapter(adapter);
                 return true;
 
             case R.id.cust_sort_by_id:
                 customerList.sortByID();
-                adapter = new CustomerListRVA(this, customerList);
+                adapter = new CustomerListRecyclerViewActivity(this, customerList);
                 adapter.setClickListener(this);
                 recyclerView.setAdapter(adapter);
                 return true;
