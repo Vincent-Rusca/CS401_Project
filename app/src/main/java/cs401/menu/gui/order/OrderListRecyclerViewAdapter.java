@@ -29,8 +29,12 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
 
     @Override
     public void onBindViewHolder(OrderListRecyclerViewAdapter.ViewHolder holder, int position) {
-        String text = mData.getOrderByIndex(position).getItemName();
-        holder.myTextView.setText(text);
+        int quantity = mData.getOrderByIndex(position).getQuantity();
+        holder.orderNameView.setText("Item: " + mData.getOrderByIndex(position).getItemName());
+        holder.orderInvoiceView.setText("Invoice: " + mData.getOrderByIndex(position).getInvoiceNumber());
+        holder.orderQuantityView.setText("Quantity: " + quantity);
+        holder.orderCostTotal.setText("Total cost: $" +
+                Double.toString(mData.getOrderByIndex(position).getCost() * quantity));
     }
 
     @Override
@@ -39,11 +43,17 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        TextView orderNameView;
+        TextView orderInvoiceView;
+        TextView orderQuantityView;
+        TextView orderCostTotal;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.orderListNames);
+            orderNameView = itemView.findViewById(R.id.orderListNames);
+            orderInvoiceView = itemView.findViewById(R.id.orderListInvoiceNumber);
+            orderQuantityView = itemView.findViewById(R.id.orderListQuantity);
+            orderCostTotal = itemView.findViewById(R.id.orderListCostTotal);
             itemView.setOnClickListener(this);
         }
 
