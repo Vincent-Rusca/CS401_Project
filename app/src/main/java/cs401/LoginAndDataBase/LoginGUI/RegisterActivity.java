@@ -44,14 +44,24 @@ public class RegisterActivity extends AppCompatActivity {
                     String userCheck = databaseHelper.searchUser(user);
                     // Checks to see if the username already exists
                     if(user.equals(userCheck)){
-                        Toast nopass = Toast.makeText(RegisterActivity.this, "User Already Exists", Toast.LENGTH_SHORT);
-                        nopass.show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                final Toast nopass = Toast.makeText(RegisterActivity.this, "User Already Exists", Toast.LENGTH_SHORT);
+                                nopass.show();
+                            }
+                        });
                     }
 
                     // Checks to see if the passwords are equal
                     else if (!pass.equals(pass2)) {
-                        Toast nopass = Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT);
-                        nopass.show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                final Toast nopass = Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT);
+                                nopass.show();
+                            }
+                        });
                     }
                     // Adds the username and password to the database
                     else {
