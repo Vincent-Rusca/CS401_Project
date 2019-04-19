@@ -1,4 +1,4 @@
-package cs401.LoginAndDataBase.Database;
+/*package cs401.LoginAndDataBase.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,8 +12,9 @@ import org.junit.runner.RunWith;
 
 
 import static org.junit.Assert.*;
+*/
 /*Setting up for Android JUnit Test Cases for GroupHW3*/
-@RunWith(AndroidJUnit4.class)
+/*@RunWith(AndroidJUnit4.class)
 public class DatabaseHelperTest {
     private SQLiteDatabase db;
     private DatabaseHelper dbH;
@@ -51,4 +52,4 @@ public class DatabaseHelperTest {
     @Test
     public void searchUser() {
     }
-}
+}*/
