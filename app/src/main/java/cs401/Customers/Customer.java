@@ -61,4 +61,14 @@ public class Customer implements Serializable {
         orderList.removeOrderByIndex(index);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Customer) {
+            Customer otherCustomer = (Customer) other;
+            return customerName.equals(otherCustomer.customerName) &&
+                    customerID.equals(otherCustomer.customerID) &&
+                    address.equals(otherCustomer.address);
+        }
+        return false;
+    }
 }
