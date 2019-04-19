@@ -1,10 +1,10 @@
 package cs401.menu.gui.customer;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
 import cs401.Customers.Address;
 import cs401.Customers.Customer;
 import cs401.R;

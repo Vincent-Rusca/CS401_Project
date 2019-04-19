@@ -58,4 +58,16 @@ public class Address implements Serializable {
     }
 
     //
+
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Address) {
+            Address otherAddress = (Address) other;
+            return streetAddress.equals(otherAddress.streetAddress) &&
+                    cityAddress.equals(otherAddress.cityAddress) &&
+                    stateAddress.equals(otherAddress.stateAddress) &&
+                    zipAddress.equals(otherAddress.zipAddress);
+        }
+        return false;
+    }
 }

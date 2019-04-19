@@ -1,26 +1,27 @@
 package cs401.menu.gui.customer;
 
 import android.content.res.Resources;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import cs401.Customers.Customer;
 import cs401.Customers.CustomerList;
 import cs401.Orders.Order;
 import cs401.R;
 import cs401.menu.gui.CustomerListStateManager;
+import cs401.menu.gui.ViewUpdate;
 
 /**
  * display a list of all the customers
  */
-public class DisplayCustomerActivity extends AppCompatActivity implements CustomerListRecyclerViewActivity.ItemClickListener {
+public class DisplayCustomerActivity extends AppCompatActivity implements CustomerListRecyclerViewActivity.ItemClickListener, ViewUpdate {
 
     CustomerListRecyclerViewActivity customerListAdapter;
     RecyclerView recyclerView;
@@ -110,5 +111,13 @@ public class DisplayCustomerActivity extends AppCompatActivity implements Custom
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void updateView(CustomerList customerList) {
+        this.customerList = customerList;
+        this.customerListAdapter = new CustomerListRecyclerViewActivity(this, customerList);
+        customerListAdapter.setClickListener(this);
+        recyclerView.setAdapter(customerListAdapter);
     }
 }
