@@ -1,12 +1,12 @@
 package cs401.menu.gui.order;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
 import cs401.Orders.Order;
 import cs401.Orders.OrderList;
 import cs401.R;
