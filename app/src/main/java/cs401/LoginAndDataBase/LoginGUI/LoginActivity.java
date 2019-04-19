@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             Customer newCustomer = new Customer("Test Incorporated LLC", "2", customerAddress);
             newCustomer.addToOrderList(new Order("Zebra", 1100, 20, 98723, "a taco", 2002, 4,1));
             newCustomer.addToOrderList(new Order("Apple", 140, 23, 923423, "a taco2", 2004, 1, 1));
+            newCustomer.getOrderList().getOrderbyName("Zebra").setFulfilledDate(1, 1, 2003);
             CustomerListStateManager.getInstance().addCustomer(newCustomer);
 
             customerAddress = new Address("45 Ocho St.", "Paris", "TX", "54554");

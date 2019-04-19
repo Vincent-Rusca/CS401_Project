@@ -1,6 +1,7 @@
 package cs401.menu.gui.order;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +30,21 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
 
     @Override
     public void onBindViewHolder(OrderListRecyclerViewAdapter.ViewHolder holder, int position) {
-        int quantity = mData.getOrderByIndex(position).getQuantity();
-        holder.orderNameView.setText("Item: " + mData.getOrderByIndex(position).getItemName());
-        holder.orderInvoiceView.setText("Invoice: " + mData.getOrderByIndex(position).getInvoiceNumber());
+        Order item = mData.getOrderByIndex(position);
+        int quantity = item.getQuantity();
+        holder.orderNameView.setText("Item: " + item.getItemName());
+        holder.orderInvoiceView.setText("Invoice: " + item.getInvoiceNumber());
         holder.orderQuantityView.setText("Quantity: " + quantity);
         holder.orderCostTotal.setText("Total cost: $" +
-                Double.toString(mData.getOrderByIndex(position).getCost() * quantity));
+                Double.toString(item.getCost() * quantity));
+        if (item.getYrReceived() > 1900) {
+            holder.fulfillmentStatus.setText("ORDER FULFILLED on " +
+                item.getDayReceived() + "/" + item.getMoReceived() + "/" + item.getYrReceived());
+            holder.fulfillmentStatus.setTextColor(Color.GREEN);
+        } else {
+            holder.fulfillmentStatus.setText("ORDER NOT FULFILLED!");
+            holder.fulfillmentStatus.setTextColor(Color.RED);
+        }
     }
 
     @Override
@@ -47,6 +57,7 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
         TextView orderInvoiceView;
         TextView orderQuantityView;
         TextView orderCostTotal;
+        TextView fulfillmentStatus;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -54,6 +65,7 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
             orderInvoiceView = itemView.findViewById(R.id.orderListInvoiceNumber);
             orderQuantityView = itemView.findViewById(R.id.orderListQuantity);
             orderCostTotal = itemView.findViewById(R.id.orderListCostTotal);
+            fulfillmentStatus = itemView.findViewById(R.id.fulfillmentStatus);
             itemView.setOnClickListener(this);
         }
 

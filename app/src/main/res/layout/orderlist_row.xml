@@ -51,6 +51,14 @@ android:padding="10dp">
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#787878"/>
 
+        <TextView
+            android:id="@+id/fulfillmentStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+
     </LinearLayout>
 
 

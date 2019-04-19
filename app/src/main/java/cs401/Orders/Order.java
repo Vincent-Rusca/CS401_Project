@@ -32,6 +32,9 @@ public class Order implements Serializable {
         this.invoiceNumber = 0;
         this.itemDescr = "";
         this.orderStatus = false;
+        this.yrReceived = -1;
+        this.moReceived = -1;
+        this.dayReceived = -1;
     }
 
     /* constructor that creates an order and initializes the date to the time it was created */
@@ -51,6 +54,11 @@ public class Order implements Serializable {
         this.hour = calendar.get(calendar.HOUR);
         this.min = calendar.get(calendar.MINUTE);
         this.sec = calendar.get(calendar.SECOND);
+
+        // for fulfillment date
+        this.yrReceived = -1;
+        this.moReceived = -1;
+        this.dayReceived = -1;
     }
 
     /* constructor that creates an order and initializes the date to the time it was created and sets when the order should be received at the latest*/
@@ -222,6 +230,18 @@ public class Order implements Serializable {
         return ((this.mo + 1) + "." + this.day + "." + this.yr);
     }
 
+    public int getYrReceived() {
+        return yrReceived;
+    }
+
+    public int getMoReceived() {
+        return moReceived;
+    }
+
+    public int getDayReceived() {
+        return dayReceived;
+    }
+
     /*******************************************************************************************************************
      * UNIQUE FUNCTIONS
      ******************************************************************************************************************/
@@ -264,5 +284,20 @@ public class Order implements Serializable {
 
         /* if the order has not been received but has not passed the expected due date */
         return false;
+    }
+
+    // to fulfill order
+    public void fulfillOrder() {
+        Calendar now = Calendar.getInstance();
+        this.yrReceived = now.YEAR;
+        this.moReceived = now.MONTH;
+        this.dayReceived = now.DAY_OF_MONTH;
+    }
+
+    // to manually set fulfilled date (for testing)
+    public void setFulfilledDate(int day, int month, int year) {
+        this.yrReceived = year;
+        this.moReceived = month;
+        this.dayReceived = day;
     }
 }
