@@ -9,8 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 * This will have all of the functions to create, check or add to the database*/
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_TEST = "testCase";
-    private static final String DATABASE_NAME = "testLogin";
+    static final String DATABASE_NAME = "testLogin";
     private static final String TABLE_NAME = "testLog";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_ID = "id";

@@ -55,8 +55,13 @@ public class LoginActivity extends AppCompatActivity {
                         Intent menu = new Intent(LoginActivity.this, CustomerActivity.class);
                         startActivity(menu);
                     } else {
-                        Toast nopass = Toast.makeText(LoginActivity.this, "Username or Password don't match!", Toast.LENGTH_SHORT);
-                        nopass.show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                final Toast nopass = Toast.makeText(LoginActivity.this, "Username or Password don't match!", Toast.LENGTH_SHORT);
+                                nopass.show();
+                            }
+                        });
                     }
 
                 }
