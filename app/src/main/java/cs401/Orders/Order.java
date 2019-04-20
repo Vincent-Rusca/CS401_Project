@@ -8,6 +8,7 @@ package cs401.Orders;
  * Description: The Order class */
 
 import java.io.Serializable;
+import java.time.Year;
 import java.util.Calendar;
 
 public class Order implements Serializable {
@@ -285,9 +286,9 @@ public class Order implements Serializable {
     // to fulfill order
     public void fulfillOrder() {
         Calendar now = Calendar.getInstance();
-        yrReceived = now.YEAR;
-        moReceived = now.MONTH;
-        dayReceived = now.DAY_OF_MONTH;
+        yrReceived = now.get(now.YEAR);
+        moReceived = now.get(now.MONTH) + 1;
+        dayReceived = now.get(now.DAY_OF_MONTH);
     }
 
     // for testing

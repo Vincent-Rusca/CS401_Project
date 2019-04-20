@@ -37,9 +37,9 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
         holder.orderQuantityView.setText("Quantity: " + quantity);
         holder.orderCostTotal.setText("Total cost: $" +
                 Double.toString(item.getCost() * quantity));
-        if (item.getYrReceived() > 1900) {
+        if (item.getYrReceived() > 0) {
             holder.fulfillmentStatus.setText("ORDER FULFILLED on " +
-                item.getDayReceived() + "/" + item.getMoReceived() + "/" + item.getYrReceived());
+                item.getMoReceived() + "/" + item.getDayReceived() + "/" + item.getYrReceived());
             holder.fulfillmentStatus.setTextColor(Color.GREEN);
         } else {
             holder.fulfillmentStatus.setText("ORDER NOT FULFILLED!");

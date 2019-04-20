@@ -58,9 +58,9 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            adapter.getItem(thePosition).fulfillOrder();
-                            adapter.update();
-                            //adapter.notifyItemChanged(thePosition);
+                            customer.getOrderList().getOrderList().get(thePosition).fulfillOrder();
+                            //adapter.update();
+                            adapter.notifyItemChanged(thePosition);
                             //recyclerView.setAdapter(adapter);
                         }
                     })
