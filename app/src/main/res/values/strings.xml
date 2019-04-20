@@ -42,6 +42,7 @@
     <string name="order_quantity">Quantity:</string>
     <string name="order_invoice">Invoice Number:</string>
     <string name="order_description">Description:</string>
+    <string name="order_display_title">These Orders Have Not Been Placed In A While:</string>
 
     <string name="username">Username</string>
     <string name="password">Password</string>

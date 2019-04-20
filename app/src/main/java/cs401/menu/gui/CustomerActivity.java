@@ -7,10 +7,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import cs401.Customers.Customer;
 import cs401.Customers.CustomerList;
+import cs401.Orders.Order;
 import cs401.R;
 import cs401.menu.gui.customer.AddCustomerActivity;
 import cs401.menu.gui.customer.CustomerListRecyclerViewActivity;
@@ -31,12 +37,31 @@ public class CustomerActivity extends AppCompatActivity implements CustomerListR
         setContentView(R.layout.customer_menu);
 
         customerList = CustomerListStateManager.getInstance().getCustomerList();
+        notifyOrderMightBeFilled();
 
         recyclerView = findViewById(R.id.custList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CustomerListRecyclerViewActivity(this, customerList);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void notifyOrderMightBeFilled() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Calendar now = Calendar.getInstance();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Customer customer : customerList.getCustomerList()) {
+            for (Order order : customer.getOrderList().getOrderList()) {
+                if (order.isFulfilled() && now.get(Calendar.YEAR) > order.getYrReceived()) {
+                    stringBuilder.append(order.getItemName());
+                    stringBuilder.append(" from ");
+                    stringBuilder.append(customer.getCustomerName());
+                    stringBuilder.append("\n");
+                }
+            }
+        }
+        builder.setTitle(R.string.order_display_title).setMessage(stringBuilder.toString());
+        builder.create().show();
     }
 
     @Override
