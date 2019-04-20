@@ -300,4 +300,11 @@ public class Order implements Serializable {
         this.moReceived = month;
         this.dayReceived = day;
     }
+
+    public boolean isFulfilled() {
+        if (yrReceived > 0) {
+            return true;
+        }
+        return false;
+    }
 }

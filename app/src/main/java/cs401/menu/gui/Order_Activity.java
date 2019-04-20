@@ -1,17 +1,20 @@
 package cs401.menu.gui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cs401.Customers.Customer;
+import cs401.Orders.Order;
 import cs401.Orders.OrderList;
 import cs401.R;
 
@@ -45,8 +48,33 @@ public class Order_Activity extends AppCompatActivity implements OrderListRecycl
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
 
+        final int thePosition = position;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if (!adapter.getItem(position).isFulfilled()) {
+            builder.setTitle("Fulfillment Status")
+                    .setMessage("Do you want to mark this order as fulfilled?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            adapter.getItem(thePosition).fulfillOrder();
+                            adapter.update();
+                            //adapter.notifyItemChanged(thePosition);
+                            //recyclerView.setAdapter(adapter);
+                        }
+                    })
+                    .setNegativeButton("No", null);
+        } else {
+            builder.setTitle("Fulfillment Status")
+                    .setMessage("This order has been fulfilled already.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    });
+        }
+        builder.create().show();
     }
 
     @Override

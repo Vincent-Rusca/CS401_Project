@@ -96,4 +96,9 @@ public class OrderListRecyclerViewAdapter extends RecyclerView.Adapter<OrderList
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
+
+    public void update() {
+        notifyDataSetChanged();
+
+    }
 }
