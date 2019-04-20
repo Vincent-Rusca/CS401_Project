@@ -1,6 +1,7 @@
 package cs401.LoginAndDataBase.LoginGUI;
 
 import android.content.Intent;
+import android.widget.EditText;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
@@ -17,6 +18,7 @@ import cs401.menu.Menu;
 import cs401.menu.gui.CustomerActivity;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.unregisterIdlingResources;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -24,6 +26,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertEquals;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -42,9 +45,7 @@ public class LoginActivityTest {
         onView(withId(R.id.username)).perform(typeText(user), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.password)).perform(typeText(pass), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.loginbtn)).perform(click());
-        activityTestRule.finishActivity();
-        Intent data = activityTestRule.getActivityResult().getResultData();
-
+        onView(withText("Customer List")).check(matches(isDisplayed()));
 
     }
 

@@ -1,4 +1,4 @@
-package cs401.menu.gui.customer.modify;
+package cs401.menu.gui.order.modify;
 
 import android.content.Intent;
 
@@ -12,6 +12,7 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import cs401.Customers.Address;
 import cs401.Customers.Customer;
+import cs401.Orders.Order;
 import cs401.R;
 import cs401.menu.gui.CustomerListStateManager;
 
@@ -24,7 +25,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class ModifyCustomerNameActivityTest {
+public class ModifyOrderNameActivityTest {
 
     @Before
     public void setUp() {
@@ -32,19 +33,22 @@ public class ModifyCustomerNameActivityTest {
         String name = "TestName", street = "TestStreet", city = "TestCity", state = "TestState";
         int id = 1234, zip = 94555;
         Customer customer = new Customer(name, Integer.toString(id), new Address(street, city, state, Integer.toString(zip)));
+        Order order = new Order("TestOrder", 12.34, 11, 22, "A Test Order");
+        customer.addToOrderList(order);
         CustomerListStateManager.getInstance().addCustomer(customer);
         Intent intent = new Intent();
-        intent.putExtra("customer", 0);
+        intent.putExtra("customerIndex", 0);
+        intent.putExtra("orderIndex", 0);
         activityRule.launchActivity(intent);
     }
 
     @Rule
-    public ActivityTestRule<ModifyCustomerNameActivity> activityRule = new ActivityTestRule<>(ModifyCustomerNameActivity.class, false, false);
+    public ActivityTestRule<ModifyOrderNameActivity> activityRule = new ActivityTestRule<>(ModifyOrderNameActivity.class, false, false);
 
     @Test
     public void testRemove() {
-        onView(withId(R.id.modify_customer_name)).perform(typeText("NewTestName"), closeSoftKeyboard());
-        onView(withId(R.id.menu_save)).perform(click());
-        assertEquals("NewTestName", CustomerListStateManager.getInstance().getCustomer(0).getCustomerName());
+        onView(withId(R.id.modify_order_name)).perform(typeText("NewTestOrderName"), closeSoftKeyboard());
+        onView(withId(R.id.order_name)).perform(click());
+        assertEquals("NewTestOrderName", CustomerListStateManager.getInstance().getCustomer(0).getOrderList().getOrderByIndex(0).getItemName());
     }
 }
