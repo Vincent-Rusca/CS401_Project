@@ -300,4 +300,17 @@ public class Order implements Serializable {
         this.moReceived = month;
         this.dayReceived = day;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Order) {
+            Order otherOrder = (Order) other;
+            return item.equals(otherOrder.item) &&
+                    cost == otherOrder.cost &&
+                    quantity == otherOrder.quantity &&
+                    invoiceNumber == otherOrder.invoiceNumber &&
+                    itemDescr.equals(otherOrder.itemDescr);
+        }
+        return false;
+    }
 }
